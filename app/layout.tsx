@@ -70,7 +70,7 @@ const jsonLd = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="bg-cream text-ink min-h-screen font-sans antialiased">
+      <body className="bg-cream text-ink min-h-screen overflow-x-hidden font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

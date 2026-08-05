@@ -40,18 +40,23 @@ export const workProjects: WorkProject[] = [
     gradient: "from-[#C7784E] to-[#8F3F20]",
   },
   {
-    slug: "panda",
-    industry: "B2B Wholesale",
-    name: "Panda",
+    slug: "proveer-vestir",
+    industry: "Workwear & Retail",
+    name: "Proveer & Vestir SpA",
     year: "2025",
     overview:
-      "Panda's wholesale operation was running on manual, spreadsheet-driven ordering — every account, price tier, and inventory update tracked by hand. JAVE AGENCY replaced that process with a custom B2B ordering portal built around how the business actually sells.",
-    servicesProvided: ["Custom web application", "UX/UI design", "Account & pricing architecture"],
-    results: [
-      "Manual ordering replaced with a self-serve B2B portal",
-      "Tiered pricing and account management handled automatically",
-      "Inventory sync removes a full manual reconciliation step",
+      "Proveer & Vestir is a Chilean workwear supplier that sells almost entirely through direct conversation with customers. JAVE AGENCY built a catalog website designed around that reality — every product page routes straight into a WhatsApp order instead of forcing a checkout flow customers didn't want.",
+    servicesProvided: [
+      "Catalog website design",
+      "WhatsApp order integration",
+      "Responsive development",
     ],
+    results: [
+      "Full product catalog live and easy to browse on any device",
+      "Every listing routes directly into a WhatsApp order",
+      "A credible, on-brand storefront for a business that sold by word of mouth",
+    ],
+    href: "https://www.proveervestirspa.com",
     gradient: "from-[#264653] to-[#16262C]",
   },
   {

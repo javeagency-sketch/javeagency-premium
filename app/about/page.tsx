@@ -3,8 +3,17 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
+import { FounderPhoto } from "@/components/founder-photo";
 import { Reveal, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
-import { aboutHero, aboutStory, differentiators, beforeAfter, aboutCta } from "@/lib/about";
+import {
+  aboutHero,
+  aboutStory,
+  foundersSection,
+  founders,
+  differentiators,
+  beforeAfter,
+  aboutCta,
+} from "@/lib/about";
 
 const description =
   "JAVE AGENCY is a web design, branding, and marketing agency working with businesses in the United States, Chile, and Colombia — premium websites and digital growth, built by one team.";
@@ -62,6 +71,43 @@ export default function AboutPage() {
               .
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-paper py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <RevealMask className="mb-16 md:mb-20">
+            <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
+              {foundersSection.eyebrow}
+            </span>
+            <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
+              {foundersSection.heading}
+            </h2>
+          </RevealMask>
+
+          <RevealGroup className="border-line bg-line grid grid-cols-1 gap-px border md:grid-cols-2">
+            {founders.map((person) => (
+              <RevealItem key={person.name}>
+                <div className="bg-cream h-full">
+                  <div className="aspect-[4/3]">
+                    <FounderPhoto
+                      src={person.photo}
+                      alt={person.name}
+                      initial={person.initial}
+                      gradient={person.gradient}
+                    />
+                  </div>
+                  <div className="p-7 md:p-8">
+                    <h3 className="font-serif text-2xl tracking-tight">{person.name}</h3>
+                    <span className="text-terracotta-dark mb-3.5 block text-[11.5px] tracking-[0.08em] uppercase">
+                      {person.role}
+                    </span>
+                    <p className="text-ink-soft text-base leading-relaxed">{person.bio}</p>
+                  </div>
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 

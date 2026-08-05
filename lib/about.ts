@@ -18,6 +18,30 @@ export const aboutStory = {
   ],
 };
 
+export const foundersSection = {
+  eyebrow: "Meet the Founders",
+  heading: "Two people. Full commitment.",
+};
+
+export const founders = [
+  {
+    name: "Javiera",
+    role: "Creative Director",
+    initial: "J",
+    bio: "Inspired by travel, timeless design, and the energy of New York, Javiera leads brand strategy and growth marketing — crafting brands that feel intentional, memorable, and beautifully simple.",
+    photo: "/images/team/javiera.jpg",
+    gradient: "from-[#C7784E] to-[#8F3F20]",
+  },
+  {
+    name: "Sebastián",
+    role: "Design & Development Lead",
+    initial: "S",
+    bio: "Sebastián designs and builds every digital experience JAVE AGENCY ships, bringing the same care to a client's website that he brings to his own creative work.",
+    photo: "/images/team/sebastian.jpg",
+    gradient: "from-[#264653] to-[#16262C]",
+  },
+];
+
 export const differentiators = [
   {
     num: "01",

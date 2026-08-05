@@ -6,7 +6,9 @@ export const site = {
   description:
     "Javé Agency is a two-person creative studio blending marketing strategy, bold design and digital development to help ambitious businesses grow.",
   bookingUrl: "https://calendar.app.google/8PbpkbSVL3EtkQo2A",
-  whatsappUrl: "https://wa.me/56975280959",
+  phoneDisplay: "+1 (717) 808-6050",
+  phoneHref: "tel:+17178086050",
+  whatsappUrl: "https://wa.me/17178086050",
   instagramUrl: "https://www.instagram.com/jave.marketing/",
   email: "hello@javeagency.com",
 };
@@ -31,10 +33,9 @@ export const navLinks = [
 ];
 
 export const metrics = [
-  { value: "25+", label: "Projects Shipped" },
-  { value: "US · CL · CO", label: "Where We Operate" },
-  { value: "95+", label: "Lighthouse Performance" },
-  { value: "2–4 wks", label: "Typical Turnaround" },
+  { target: 25, suffix: "+", label: "Projects Delivered" },
+  { target: 95, suffix: "+", label: "Lighthouse Performance" },
+  { target: 99, suffix: "%", label: "Successful Businesses" },
 ];
 
 export type WhatWeBuildKey = "websites" | "brand" | "content" | "automation";
@@ -121,11 +122,12 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-[#C7784E] to-[#8F3F20]",
   },
   {
-    industry: "B2B Wholesale",
-    name: "Panda",
+    industry: "Workwear & Retail",
+    name: "Proveer & Vestir SpA",
     summary:
-      "Replaced manual, spreadsheet-driven ordering with a custom portal — tiered pricing, account management, and inventory sync in one place.",
-    badges: ["Custom B2B Portal", "Tiered Pricing", "Inventory Sync"],
+      "Built a catalog website for a Chilean workwear supplier, designed around how customers actually buy — every product routes straight into a direct WhatsApp order.",
+    badges: ["Catalog Website", "WhatsApp Ordering", "Responsive Design"],
+    href: "https://www.proveervestirspa.com",
     gradient: "from-[#264653] to-[#16262C]",
   },
   {

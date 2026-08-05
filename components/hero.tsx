@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
+import { Phone } from "lucide-react";
 import { HeroBackground } from "@/components/hero-background";
 import { MagneticLink } from "@/components/ui/magnetic-link";
 import { EASE, RevealMask } from "@/components/ui/reveal";
@@ -43,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
           >
             <MagneticLink
               href={site.bookingUrl}
@@ -59,6 +60,13 @@ export function Hero() {
             >
               View Selected Work
             </Link>
+            <MagneticLink
+              href={site.phoneHref}
+              className="border-line text-ink hover:border-terracotta hover:text-terracotta-dark inline-flex w-full items-center justify-center gap-2 rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
+            >
+              <Phone size={14} />
+              Call Now
+            </MagneticLink>
           </motion.div>
         </div>
       </div>
