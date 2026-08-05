@@ -1,0 +1,44 @@
+"use client";
+
+import { HoverLift, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
+import { whatWeBuild } from "@/lib/content";
+
+export function WhatWeBuild() {
+  return (
+    <section id="services" className="bg-cream py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <RevealMask className="mb-20 max-w-2xl md:mb-28">
+          <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
+            What We Build
+          </span>
+          <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
+            Everything a growing brand needs — under one roof.
+          </h2>
+        </RevealMask>
+
+        <RevealGroup className="border-line border-t">
+          {whatWeBuild.map((item) => (
+            <RevealItem key={item.key}>
+              <HoverLift className="group border-line hover:border-terracotta/50 border-b py-12 transition-colors duration-500 md:py-16">
+                <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-16">
+                  <div className="flex items-baseline gap-6 md:w-2/5">
+                    <span className="text-terracotta font-serif text-lg">{item.num}</span>
+                    <h3 className="text-3xl leading-[1.05] font-medium tracking-tight md:text-4xl">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="md:w-2/5">
+                    <p className="text-ink-soft mb-4 text-lg leading-relaxed">{item.desc}</p>
+                    <p className="text-ink-soft/70 text-xs tracking-[0.08em] uppercase">
+                      {item.bullets.join(" · ")}
+                    </p>
+                  </div>
+                </div>
+              </HoverLift>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </div>
+    </section>
+  );
+}
