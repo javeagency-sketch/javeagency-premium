@@ -11,16 +11,19 @@ export function IndustryLocationPageContent({ page }: { page: IndustryLocationPa
     name: site.name,
     description: page.metaDescription,
     url: `${siteUrl}/services/${page.slug}`,
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: "Orange County, NY",
-    },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Sullivan County, NY" },
+      { "@type": "City", name: "Monticello, NY" },
+      { "@type": "City", name: "Wurtsboro, NY" },
+      { "@type": "City", name: "Bloomingburg, NY" },
+      { "@type": "City", name: "Pine Bush, NY" },
+    ],
     makesOffer: {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
         name: page.serviceType,
-        areaServed: "Orange County, NY",
+        areaServed: "Sullivan County, NY",
         provider: {
           "@type": "ProfessionalService",
           name: site.name,

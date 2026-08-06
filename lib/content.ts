@@ -40,7 +40,7 @@ export const hero = {
   locationLine:
     "Proudly serving Sullivan County — Monticello, Wurtsboro, Bloomingburg, Pine Bush, and beyond.",
   subheadline:
-    "Premium websites, branding systems, and AI-powered growth infrastructure for ambitious businesses in the United States, Chile, and Colombia.",
+    "Premium websites, branding systems, and AI-powered growth infrastructure for ambitious businesses across Sullivan County, Monticello, Wurtsboro, Bloomingburg, and the greater Catskills region.",
 };
 
 export const legalLinks = [
