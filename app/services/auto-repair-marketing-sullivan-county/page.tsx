@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import { IndustryLocationPageContent } from "@/components/industry-location-page";
 import { getIndustryLocationPage } from "@/lib/industry-locations";
 
-const page = getIndustryLocationPage("legal-marketing-orange-county")!;
+const page = getIndustryLocationPage("auto-repair-marketing-sullivan-county")!;
 
 export const metadata: Metadata = {
   title: page.metaTitle,
   description: page.metaDescription,
-  alternates: { canonical: "/services/legal-marketing-orange-county" },
+  alternates: { canonical: "/services/auto-repair-marketing-sullivan-county" },
   openGraph: {
     title: `${page.metaTitle} — Javé Agency`,
     description: page.metaDescription,
-    url: "/services/legal-marketing-orange-county",
+    url: "/services/auto-repair-marketing-sullivan-county",
   },
   twitter: { title: `${page.metaTitle} — Javé Agency`, description: page.metaDescription },
 };
 
-export default function LegalMarketingOrangeCountyPage() {
+export default function AutoRepairMarketingSullivanCountyPage() {
   return <IndustryLocationPageContent page={page} />;
 }

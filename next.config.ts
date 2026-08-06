@@ -24,7 +24,29 @@ const cspHeader = `
   .replace(/\s{2,}/g, " ")
   .trim();
 
+const orangeCountySlugs = [
+  "construction",
+  "landscaping",
+  "roofing",
+  "plumbing",
+  "hvac",
+  "electrician",
+  "restaurant",
+  "medical",
+  "legal",
+  "real-estate",
+  "auto-repair",
+  "fitness",
+];
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return orangeCountySlugs.map((industry) => ({
+      source: `/services/${industry}-marketing-orange-county`,
+      destination: `/services/${industry}-marketing-sullivan-county`,
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       {

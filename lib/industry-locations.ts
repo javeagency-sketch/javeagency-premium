@@ -15,7 +15,7 @@ export type IndustryLocationPage = {
 
 export const industryLocationPages: IndustryLocationPage[] = [
   {
-    slug: "construction-marketing-orange-county",
+    slug: "construction-marketing-sullivan-county",
     industry: "Construction",
     eyebrow: "Construction Marketing",
     metaTitle: "Construction Marketing in Sullivan County, NY",
@@ -54,7 +54,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your construction business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "landscaping-marketing-orange-county",
+    slug: "landscaping-marketing-sullivan-county",
     industry: "Landscaping",
     eyebrow: "Landscaping Marketing",
     metaTitle: "Landscaping Marketing in Sullivan County, NY",
@@ -93,7 +93,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your landscaping business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "roofing-marketing-orange-county",
+    slug: "roofing-marketing-sullivan-county",
     industry: "Roofing",
     eyebrow: "Roofing Marketing",
     metaTitle: "Roofing Marketing Agency in Sullivan County, NY",
@@ -132,7 +132,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your roofing business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "plumbing-marketing-orange-county",
+    slug: "plumbing-marketing-sullivan-county",
     industry: "Plumbing",
     eyebrow: "Plumbing Marketing",
     metaTitle: "Plumbing Marketing Services in Monticello & Sullivan County",
@@ -171,7 +171,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your plumbing business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "hvac-marketing-orange-county",
+    slug: "hvac-marketing-sullivan-county",
     industry: "HVAC",
     eyebrow: "HVAC Marketing",
     metaTitle: "HVAC Marketing for Sullivan County Contractors",
@@ -210,7 +210,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your HVAC business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "electrician-marketing-orange-county",
+    slug: "electrician-marketing-sullivan-county",
     industry: "Electrician",
     eyebrow: "Electrician Marketing",
     metaTitle: "Electrician Marketing in Sullivan County, NY",
@@ -249,7 +249,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your electrical business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "restaurant-marketing-orange-county",
+    slug: "restaurant-marketing-sullivan-county",
     industry: "Restaurant",
     eyebrow: "Restaurant Marketing",
     metaTitle: "Restaurant Marketing in Monticello & Sullivan County",
@@ -288,7 +288,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your restaurant and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "medical-marketing-orange-county",
+    slug: "medical-marketing-sullivan-county",
     industry: "Medical & Healthcare",
     eyebrow: "Healthcare Marketing",
     metaTitle: "Medical Practice Marketing in Sullivan County, NY",
@@ -327,7 +327,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your practice and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "legal-marketing-orange-county",
+    slug: "legal-marketing-sullivan-county",
     industry: "Legal",
     eyebrow: "Legal Marketing",
     metaTitle: "Law Firm Marketing in Sullivan County, NY",
@@ -366,7 +366,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your firm and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "real-estate-marketing-orange-county",
+    slug: "real-estate-marketing-sullivan-county",
     industry: "Real Estate",
     eyebrow: "Real Estate Marketing",
     metaTitle: "Real Estate Marketing in Sullivan County, NY",
@@ -405,7 +405,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your real estate business and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "auto-repair-marketing-orange-county",
+    slug: "auto-repair-marketing-sullivan-county",
     industry: "Auto Repair",
     eyebrow: "Auto Repair Marketing",
     metaTitle: "Auto Repair Marketing in Sullivan County, NY",
@@ -444,7 +444,7 @@ export const industryLocationPages: IndustryLocationPage[] = [
       "Tell us about your shop and we'll map out a marketing plan built for Sullivan County, NY.",
   },
   {
-    slug: "fitness-marketing-orange-county",
+    slug: "fitness-marketing-sullivan-county",
     industry: "Fitness & Wellness",
     eyebrow: "Fitness Marketing",
     metaTitle: "Fitness & Gym Marketing in Sullivan County, NY",
