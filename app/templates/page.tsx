@@ -93,9 +93,18 @@ export default function TemplatesPage() {
                       {template.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-4">
-                      <span className="border-line text-ink-soft/50 cursor-not-allowed rounded-sm border px-5 py-2.5 text-[12px] font-semibold tracking-[0.06em] uppercase">
-                        Live Demo — Coming Soon
-                      </span>
+                      {template.detailSlug ? (
+                        <Link
+                          href={`/templates/${template.detailSlug}`}
+                          className="border-terracotta text-terracotta-dark hover:bg-terracotta hover:text-paper rounded-sm border px-5 py-2.5 text-[12px] font-semibold tracking-[0.06em] uppercase transition-colors"
+                        >
+                          View Preview
+                        </Link>
+                      ) : (
+                        <span className="border-line text-ink-soft/50 cursor-not-allowed rounded-sm border px-5 py-2.5 text-[12px] font-semibold tracking-[0.06em] uppercase">
+                          Live Demo — Coming Soon
+                        </span>
+                      )}
                       <Link
                         href="/contact"
                         className="text-terracotta-dark hover:text-terracotta inline-flex items-center gap-1.5 text-[12.5px] font-semibold tracking-[0.06em] uppercase transition-colors"

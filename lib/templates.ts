@@ -15,6 +15,10 @@ export type Template = {
   status: TemplateStatus;
   image: string;
   alt: string;
+  /** Route slug under /templates/[detailSlug] for the detail preview page, if one exists. */
+  detailSlug?: string;
+  /** Placeholder for the deployed Vercel demo — swap in the real URL when live. */
+  demoUrl?: string;
 };
 
 export const templates: Template[] = [
@@ -37,26 +41,32 @@ export const templates: Template[] = [
     status: "coming-soon",
     image: "/templates/luxury-salon.jpg",
     alt: "Rich burgundy-toned concept mockup for the Luxury Salon booking template, evoking an upscale salon interior",
+    detailSlug: "beautysalon",
+    demoUrl: "https://magic-center-demo.vercel.app",
   },
   {
     slug: "tattoo-studio",
     name: "Tattoo Studio",
-    category: "Creative Studio",
+    category: "Creative / Tattoo",
     description:
       "A bold, portfolio-first template for tattoo artists and studios — large gallery layouts, artist profiles, and a consultation request flow built in.",
     status: "coming-soon",
     image: "/templates/tattoo-studio.jpg",
     alt: "Moody black and charcoal concept mockup for the Tattoo Studio portfolio template, with fine-line floral tattoo motifs",
+    detailSlug: "tattoo",
+    demoUrl: "https://inkxirv-demo.vercel.app",
   },
   {
     slug: "audiovisual-portfolio",
     name: "Audiovisual Portfolio",
-    category: "Creative & Media",
+    category: "Portfolio / Creative",
     description:
       "A cinematic showcase template for filmmakers, photographers, and audiovisual studios — full-bleed reels, project breakdowns, and a client-ready contact flow.",
     status: "coming-soon",
     image: "/templates/audiovisual-portfolio.jpg",
     alt: "Cinematic dark teal concept mockup for the Audiovisual Portfolio template, featuring a silhouetted film camera on a tripod",
+    detailSlug: "audiovisual",
+    demoUrl: "https://miguel-osorio-demo.vercel.app",
   },
 ];
 
