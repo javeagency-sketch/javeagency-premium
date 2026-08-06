@@ -14,7 +14,8 @@ export type WorkProject = {
   servicesProvided: string[];
   results: string[];
   href?: string;
-  gradient: string;
+  image: string;
+  alt: string;
 };
 
 export const workProjects: WorkProject[] = [
@@ -37,7 +38,8 @@ export const workProjects: WorkProject[] = [
       "SEO structure in place from day one, not bolted on later",
     ],
     href: "https://auriacustomprints.com",
-    gradient: "from-[#C7784E] to-[#8F3F20]",
+    image: "/portfolio/auria.jpg",
+    alt: "Family posing together in matching personalized apparel with gift boxes, representing the Auria custom gifts brand",
   },
   {
     slug: "proveer-vestir",
@@ -57,7 +59,8 @@ export const workProjects: WorkProject[] = [
       "A credible, on-brand storefront for a business that sold by word of mouth",
     ],
     href: "https://www.proveervestirspa.com",
-    gradient: "from-[#264653] to-[#16262C]",
+    image: "/portfolio/proveer-vestir.jpg",
+    alt: "Colleagues in matching corporate uniforms reviewing work together, representing Proveer & Vestir SpA workwear",
   },
   {
     slug: "canelo-beats",
@@ -73,7 +76,8 @@ export const workProjects: WorkProject[] = [
       "Consistent visual system across every platform",
     ],
     href: "https://caneloflashbeats.github.io/site/",
-    gradient: "from-[#6B2C2C] to-[#2B1414]",
+    image: "/portfolio/canelo-beats.jpg",
+    alt: "Dark, cinematic recording studio with a mixing console lit by colorful ambient lighting, representing the Canelo Beats brand",
   },
   {
     slug: "eureka",
@@ -88,6 +92,7 @@ export const workProjects: WorkProject[] = [
       "Guidelines the team can apply without a designer on call",
       "Consistent look across proposals, social, and on-site materials",
     ],
-    gradient: "from-[#5B4C40] to-[#2B221B]",
+    image: "/portfolio/eureka.jpg",
+    alt: "Colorful children's birthday party with balloons and festive decorations, representing the Eureka events and entertainment brand",
   },
 ];

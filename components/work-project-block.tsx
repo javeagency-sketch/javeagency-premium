@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { EASE } from "@/components/ui/reveal";
+import { PortfolioImage } from "@/components/portfolio-image";
 import type { WorkProject } from "@/lib/work";
 
 export function WorkProjectBlock({
@@ -21,35 +21,13 @@ export function WorkProjectBlock({
       className="grid grid-cols-1 items-start gap-10 py-16 md:grid-cols-2 md:gap-16 md:py-24 lg:gap-24"
     >
       <div className={reversed ? "md:order-2" : undefined}>
-        <div className="group relative">
-          <div
-            className={`text-paper/90 relative aspect-[4/3] overflow-hidden bg-gradient-to-br font-serif text-2xl italic ${project.gradient}`}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span>{project.name}</span>
-            </div>
-            <motion.a
-              href={project.href}
-              target={project.href ? "_blank" : undefined}
-              rel={project.href ? "noopener" : undefined}
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.4, ease: EASE }}
-              className={`bg-ink/75 text-paper absolute inset-0 flex flex-col items-center justify-center gap-3 ${project.href ? "cursor-pointer" : "pointer-events-none"}`}
-            >
-              {project.href && (
-                <>
-                  <span className="border-paper/50 flex h-12 w-12 items-center justify-center rounded-full border">
-                    <ArrowUpRight size={20} />
-                  </span>
-                  <span className="text-xs font-semibold tracking-[0.16em] uppercase">
-                    View Live Site
-                  </span>
-                </>
-              )}
-            </motion.a>
-          </div>
-        </div>
+        <PortfolioImage
+          name={project.name}
+          image={project.image}
+          alt={project.alt}
+          href={project.href}
+          priority={!reversed}
+        />
       </div>
 
       <div className={reversed ? "md:order-1" : undefined}>

@@ -126,53 +126,6 @@ export const process = [
   },
 ];
 
-export type CaseStudy = {
-  industry: string;
-  name: string;
-  summary: string;
-  badges: string[];
-  href?: string;
-  gradient: string;
-};
-
-export const caseStudies: CaseStudy[] = [
-  {
-    industry: "E-Commerce",
-    name: "Auria",
-    summary:
-      "Took a print-on-demand gift brand from idea to a fully operational US storefront — store, payments, and SEO foundations built for launch.",
-    badges: ["Full Store Build", "Payment Integration", "SEO Foundations"],
-    href: "https://auriacustomprints.com",
-    gradient: "from-[#C7784E] to-[#8F3F20]",
-  },
-  {
-    industry: "Workwear & Retail",
-    name: "Proveer & Vestir SpA",
-    summary:
-      "Built a catalog website for a Chilean workwear supplier, designed around how customers actually buy — every product routes straight into a direct WhatsApp order.",
-    badges: ["Catalog Website", "WhatsApp Ordering", "Responsive Design"],
-    href: "https://www.proveervestirspa.com",
-    gradient: "from-[#264653] to-[#16262C]",
-  },
-  {
-    industry: "Music & Entertainment",
-    name: "Canelo Beats",
-    summary:
-      "Built a complete artist identity from scratch for a release — branding, website, and a social kit designed to launch together.",
-    badges: ["Brand Identity", "Website Launch", "Social Kit"],
-    href: "https://caneloflashbeats.github.io/site/",
-    gradient: "from-[#6B2C2C] to-[#2B1414]",
-  },
-  {
-    industry: "Events & Entertainment",
-    name: "Eureka",
-    summary:
-      "Gave an event entertainment company a visual identity it didn't have — logo, type system, and guidelines it could apply consistently.",
-    badges: ["Visual Identity", "Type System", "Brand Guidelines"],
-    gradient: "from-[#5B4C40] to-[#2B221B]",
-  },
-];
-
 export type GrowthStackItem = {
   Icon: LucideIcon;
   title: string;
