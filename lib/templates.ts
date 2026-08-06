@@ -17,10 +17,8 @@ export type Template = {
   alt: string;
   /** Route slug under /templates/[detailSlug] for the detail preview page, if one exists. */
   detailSlug?: string;
-  /** URL of the deployed demo — real once isLive is true, otherwise a placeholder. */
-  demoUrl?: string;
-  /** True once demoUrl points to a real, publicly reachable deployment to embed live. */
-  isLive?: boolean;
+  /** Homepage-section screenshots shown in the detail page's slider, if any. */
+  screenshots?: { src: string; alt: string; label: string }[];
 };
 
 export const templates: Template[] = [
@@ -44,8 +42,25 @@ export const templates: Template[] = [
     image: "/templates/beauty-salon.jpg",
     alt: "Rich burgundy-toned concept mockup for the Beauty Salon Template booking demo, evoking an upscale salon interior",
     detailSlug: "beautysalon",
-    demoUrl: "https://beauty-salon-jave-agency.vercel.app",
-    isLive: true,
+    screenshots: [
+      { src: "/templates/beautysalon/hero.jpg", alt: "Beauty Salon Template — hero section", label: "Hero" },
+      {
+        src: "/templates/beautysalon/services.jpg",
+        alt: "Beauty Salon Template — signature services section",
+        label: "Services",
+      },
+      {
+        src: "/templates/beautysalon/gallery.jpg",
+        alt: "Beauty Salon Template — results gallery section",
+        label: "Gallery",
+      },
+      { src: "/templates/beautysalon/about.jpg", alt: "Beauty Salon Template — our story section", label: "About" },
+      {
+        src: "/templates/beautysalon/contact.jpg",
+        alt: "Beauty Salon Template — contact section",
+        label: "Contact",
+      },
+    ],
   },
   {
     slug: "tattoo-artist",
@@ -57,8 +72,13 @@ export const templates: Template[] = [
     image: "/templates/tattoo-artist.jpg",
     alt: "Moody black and charcoal concept mockup for the Tattoo Artist Template demo, with fine-line floral tattoo motifs",
     detailSlug: "tattoo",
-    demoUrl: "https://tattoo-artist-jave-agency.vercel.app",
-    isLive: true,
+    screenshots: [
+      { src: "/templates/tattoo/hero.jpg", alt: "Tattoo Artist Template — hero section", label: "Hero" },
+      { src: "/templates/tattoo/gallery.jpg", alt: "Tattoo Artist Template — featured work gallery", label: "Gallery" },
+      { src: "/templates/tattoo/services.jpg", alt: "Tattoo Artist Template — tattoo styles section", label: "Styles" },
+      { src: "/templates/tattoo/about.jpg", alt: "Tattoo Artist Template — about section", label: "About" },
+      { src: "/templates/tattoo/contact.jpg", alt: "Tattoo Artist Template — booking section", label: "Booking" },
+    ],
   },
   {
     slug: "portfolio",
@@ -70,8 +90,13 @@ export const templates: Template[] = [
     image: "/templates/portfolio.jpg",
     alt: "Cinematic dark teal concept mockup for the Creative Portfolio Template demo, featuring a silhouetted film camera on a tripod",
     detailSlug: "portfolio",
-    demoUrl: "https://portfolio-jave-agency.vercel.app",
-    isLive: true,
+    screenshots: [
+      { src: "/templates/portfolio/hero.jpg", alt: "Creative Portfolio Template — hero section", label: "Hero" },
+      { src: "/templates/portfolio/gallery.jpg", alt: "Creative Portfolio Template — selected work section", label: "Work" },
+      { src: "/templates/portfolio/services.jpg", alt: "Creative Portfolio Template — services section", label: "Services" },
+      { src: "/templates/portfolio/about.jpg", alt: "Creative Portfolio Template — about section", label: "About" },
+      { src: "/templates/portfolio/contact.jpg", alt: "Creative Portfolio Template — contact section", label: "Contact" },
+    ],
   },
   {
     slug: "restaurant",
@@ -83,7 +108,6 @@ export const templates: Template[] = [
     image: "/templates/restaurant.jpg",
     alt: "Bold red-orange concept mockup for the Restaurant Template demo, featuring a stacked burger illustration",
     detailSlug: "restaurant",
-    demoUrl: "https://restaurant-demo.vercel.app",
   },
 ];
 

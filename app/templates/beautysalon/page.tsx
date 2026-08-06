@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
-import { DemoOnlyBadge, TemplatePreview } from "@/components/template-preview";
+import { DemoOnlyBadge } from "@/components/template-preview";
+import { TemplateSlider } from "@/components/template-slider";
 import { templates } from "@/lib/templates";
 
 const template = templates.find((t) => t.slug === "beauty-salon")!;
@@ -39,12 +40,10 @@ export default function BeautySalonTemplatePage() {
 
       <section className="bg-paper py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <TemplatePreview
+          <TemplateSlider
             title={template.name}
-            previewImage={template.image}
-            demoUrl={template.demoUrl}
             category={template.category}
-            isLive={template.isLive}
+            slides={template.screenshots ?? []}
           />
         </div>
       </section>

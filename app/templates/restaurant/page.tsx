@@ -42,9 +42,7 @@ export default function RestaurantTemplatePage() {
           <TemplatePreview
             title={template.name}
             previewImage={template.image}
-            demoUrl={template.demoUrl}
             category={template.category}
-            isLive={template.isLive}
           />
         </div>
       </section>
