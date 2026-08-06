@@ -212,6 +212,7 @@ export type IndustryItem = {
   Icon: LucideIcon;
   name: string;
   desc: string;
+  href: string;
 };
 
 export const industries: IndustryItem[] = [
@@ -219,61 +220,73 @@ export const industries: IndustryItem[] = [
     Icon: HardHat,
     name: "Construction",
     desc: "More bids, more projects, and a dominant local presence for general contractors and specialty trades across Sullivan County.",
+    href: "/services/construction-marketing-orange-county",
   },
   {
     Icon: Trees,
     name: "Landscaping",
     desc: "Year-round leads for lawn care and landscaping companies — from spring cleanups to winter snow removal contracts.",
+    href: "/services/landscaping-marketing-orange-county",
   },
   {
     Icon: Home,
     name: "Roofing",
     desc: "High-intent roofing leads, storm-season surge campaigns, and a Google presence that books estimates daily — built for Catskills winters and ice-dam season.",
+    href: "/services/roofing-marketing-orange-county",
   },
   {
     Icon: Wrench,
     name: "Plumbing",
     desc: "Emergency call capture, scheduled service bookings, and steady leads for Sullivan County plumbers, day or night.",
+    href: "/services/plumbing-marketing-orange-county",
   },
   {
     Icon: Wind,
     name: "HVAC",
     desc: "Seasonal surge campaigns, maintenance agreement marketing, and year-round lead generation — built for hot summers and cold Catskills winters.",
+    href: "/services/hvac-marketing-orange-county",
   },
   {
     Icon: Zap,
     name: "Electrician",
     desc: "Panel upgrade leads, residential service calls, and commercial project inquiries for local electrical contractors.",
+    href: "/services/electrician-marketing-orange-county",
   },
   {
     Icon: UtensilsCrossed,
     name: "Restaurant",
     desc: "More diners, more online orders, and a loyal local following for Sullivan County restaurants through social and SEO.",
+    href: "/services/restaurant-marketing-orange-county",
   },
   {
     Icon: Stethoscope,
     name: "Medical & Healthcare",
     desc: "Compliant patient acquisition strategies that grow local practices and fill appointment calendars.",
+    href: "/services/medical-marketing-orange-county",
   },
   {
     Icon: Scale,
     name: "Legal",
     desc: "More qualified consultations and page-1 rankings for Sullivan County law firms, across every practice area.",
+    href: "/services/legal-marketing-orange-county",
   },
   {
     Icon: Building2,
     name: "Real Estate",
     desc: "More buyer and seller leads, a recognized personal brand, and a CRM system that never lets a deal slip away.",
+    href: "/services/real-estate-marketing-orange-county",
   },
   {
     Icon: Car,
     name: "Auto Repair",
     desc: "More cars in your bay, a 5-star Google reputation, and a loyal customer base that keeps coming back.",
+    href: "/services/auto-repair-marketing-orange-county",
   },
   {
     Icon: Dumbbell,
     name: "Fitness & Wellness",
     desc: "Year-round membership growth, powerful social content, and retention systems for gyms and studios.",
+    href: "/services/fitness-marketing-orange-county",
   },
 ];
 

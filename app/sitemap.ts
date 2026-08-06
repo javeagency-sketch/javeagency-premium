@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/content";
 import { services } from "@/lib/services";
+import { industryLocationPages } from "@/lib/industry-locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -26,7 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
-  return [...staticRoutes, ...serviceRoutes].map((route) => ({
+  const industryLocationRoutes = industryLocationPages.map((page) => ({
+    path: `/services/${page.slug}`,
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...industryLocationRoutes].map((route) => ({
     url: `${siteUrl}${route.path}`,
     lastModified: now,
     changeFrequency: route.changeFrequency,
