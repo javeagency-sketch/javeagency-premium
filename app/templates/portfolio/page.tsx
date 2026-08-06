@@ -38,13 +38,13 @@ export default function PortfolioTemplatePage() {
       />
 
       <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <TemplatePreview
             title={template.name}
-            description={template.description}
             previewImage={template.image}
             demoUrl={template.demoUrl}
             category={template.category}
+            isLive={template.isLive}
           />
         </div>
       </section>

@@ -41,10 +41,10 @@ export default function RestaurantTemplatePage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <TemplatePreview
             title={template.name}
-            description={template.description}
             previewImage={template.image}
             demoUrl={template.demoUrl}
             category={template.category}
+            isLive={template.isLive}
           />
         </div>
       </section>

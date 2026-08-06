@@ -17,8 +17,10 @@ export type Template = {
   alt: string;
   /** Route slug under /templates/[detailSlug] for the detail preview page, if one exists. */
   detailSlug?: string;
-  /** Placeholder for the deployed Vercel demo — swap in the real URL when live. */
+  /** URL of the deployed demo — real once isLive is true, otherwise a placeholder. */
   demoUrl?: string;
+  /** True once demoUrl points to a real, publicly reachable deployment to embed live. */
+  isLive?: boolean;
 };
 
 export const templates: Template[] = [
@@ -42,7 +44,8 @@ export const templates: Template[] = [
     image: "/templates/beauty-salon.jpg",
     alt: "Rich burgundy-toned concept mockup for the Beauty Salon Template booking demo, evoking an upscale salon interior",
     detailSlug: "beautysalon",
-    demoUrl: "https://beauty-salon-demo.vercel.app",
+    demoUrl: "https://beauty-salon-jave-agency.vercel.app",
+    isLive: true,
   },
   {
     slug: "tattoo-artist",
@@ -54,7 +57,8 @@ export const templates: Template[] = [
     image: "/templates/tattoo-artist.jpg",
     alt: "Moody black and charcoal concept mockup for the Tattoo Artist Template demo, with fine-line floral tattoo motifs",
     detailSlug: "tattoo",
-    demoUrl: "https://tattoo-artist-demo.vercel.app",
+    demoUrl: "https://tattoo-artist-jave-agency.vercel.app",
+    isLive: true,
   },
   {
     slug: "portfolio",
@@ -66,7 +70,8 @@ export const templates: Template[] = [
     image: "/templates/portfolio.jpg",
     alt: "Cinematic dark teal concept mockup for the Creative Portfolio Template demo, featuring a silhouetted film camera on a tripod",
     detailSlug: "portfolio",
-    demoUrl: "https://portfolio-demo.vercel.app",
+    demoUrl: "https://portfolio-jave-agency.vercel.app",
+    isLive: true,
   },
   {
     slug: "restaurant",
