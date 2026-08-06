@@ -4,7 +4,7 @@ import { InlineCta } from "@/components/inline-cta";
 import { DemoOnlyBadge, TemplatePreview } from "@/components/template-preview";
 import { templates } from "@/lib/templates";
 
-const template = templates.find((t) => t.slug === "burger-scroll")!;
+const template = templates.find((t) => t.slug === "restaurant")!;
 
 const description =
   "Preview the Restaurant template — a fast-paced, appetite-first design for restaurants and quick-service brands, from JAVE AGENCY's premium template line.";

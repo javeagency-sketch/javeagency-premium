@@ -4,23 +4,23 @@ import { InlineCta } from "@/components/inline-cta";
 import { DemoOnlyBadge, TemplatePreview } from "@/components/template-preview";
 import { templates } from "@/lib/templates";
 
-const template = templates.find((t) => t.slug === "tattoo-studio")!;
+const template = templates.find((t) => t.slug === "tattoo-artist")!;
 
 const description =
-  "Preview the Tattoo Studio template — a bold, portfolio-first design for tattoo artists and studios, from JAVE AGENCY's premium template line.";
+  "Preview the Tattoo Artist template — a bold, portfolio-first design for tattoo artists and studios, from JAVE AGENCY's premium template line.";
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Template Preview",
+  title: "Tattoo Artist Template Preview",
   description,
   alternates: { canonical: "/templates/tattoo" },
   openGraph: {
-    title: "Tattoo Studio Template — Javé Agency",
+    title: "Tattoo Artist Template — Javé Agency",
     description,
     url: "/templates/tattoo",
     images: [{ url: template.image }],
   },
   twitter: {
-    title: "Tattoo Studio Template — Javé Agency",
+    title: "Tattoo Artist Template — Javé Agency",
     description,
     images: [template.image],
   },

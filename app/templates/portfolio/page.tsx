@@ -4,29 +4,29 @@ import { InlineCta } from "@/components/inline-cta";
 import { DemoOnlyBadge, TemplatePreview } from "@/components/template-preview";
 import { templates } from "@/lib/templates";
 
-const template = templates.find((t) => t.slug === "audiovisual-portfolio")!;
+const template = templates.find((t) => t.slug === "portfolio")!;
 
 const description =
-  "Preview the Audiovisual Portfolio template — a cinematic showcase design for filmmakers, photographers, and studios, from JAVE AGENCY's premium template line.";
+  "Preview the Creative Portfolio template — a cinematic showcase design for filmmakers, photographers, and creative studios, from JAVE AGENCY's premium template line.";
 
 export const metadata: Metadata = {
-  title: "Audiovisual Portfolio Template Preview",
+  title: "Creative Portfolio Template Preview",
   description,
-  alternates: { canonical: "/templates/audiovisual" },
+  alternates: { canonical: "/templates/portfolio" },
   openGraph: {
-    title: "Audiovisual Portfolio Template — Javé Agency",
+    title: "Creative Portfolio Template — Javé Agency",
     description,
-    url: "/templates/audiovisual",
+    url: "/templates/portfolio",
     images: [{ url: template.image }],
   },
   twitter: {
-    title: "Audiovisual Portfolio Template — Javé Agency",
+    title: "Creative Portfolio Template — Javé Agency",
     description,
     images: [template.image],
   },
 };
 
-export default function AudiovisualTemplatePage() {
+export default function PortfolioTemplatePage() {
   return (
     <>
       <DemoOnlyBadge />

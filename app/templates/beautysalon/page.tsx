@@ -4,7 +4,7 @@ import { InlineCta } from "@/components/inline-cta";
 import { DemoOnlyBadge, TemplatePreview } from "@/components/template-preview";
 import { templates } from "@/lib/templates";
 
-const template = templates.find((t) => t.slug === "luxury-salon")!;
+const template = templates.find((t) => t.slug === "beauty-salon")!;
 
 const description =
   "Preview the Beauty Salon template — an editorial, booking-first design for salons and spas, from JAVE AGENCY's premium template line.";
