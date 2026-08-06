@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
@@ -70,13 +71,18 @@ export default function TemplatesPage() {
       <section className="bg-paper py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <RevealGroup className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {templates.map((template) => (
+            {templates.map((template, i) => (
               <RevealItem key={template.slug}>
                 <HoverLift className="border-line bg-cream h-full overflow-hidden rounded-xl border">
-                  <div
-                    className={`text-paper/90 flex aspect-[16/10] items-center justify-center bg-gradient-to-br font-serif text-2xl italic ${template.gradient}`}
-                  >
-                    {template.name}
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={template.image}
+                      alt={template.alt}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      priority={i === 0}
+                      className="object-cover"
+                    />
                   </div>
                   <div className="p-8">
                     <span className="text-terracotta mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
