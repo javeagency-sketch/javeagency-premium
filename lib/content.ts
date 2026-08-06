@@ -1,10 +1,32 @@
+import {
+  BarChart3,
+  Building2,
+  Car,
+  Dumbbell,
+  Globe,
+  HardHat,
+  Home,
+  MessageCircle,
+  Palette,
+  Scale,
+  Search,
+  Share2,
+  Stethoscope,
+  Trees,
+  UtensilsCrossed,
+  Wind,
+  Wrench,
+  Zap,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 export const siteUrl = "https://javeagency.com";
 
 export const site = {
   name: "Javé Agency",
   tagline: "Design, strategy and growth for ambitious businesses.",
   description:
-    "Javé Agency is a two-person creative studio blending marketing strategy, bold design and digital development to help ambitious businesses grow.",
+    "Javé Agency builds high-converting websites, branding, and digital marketing systems for businesses in Monticello, Wurtsboro, Bloomingburg, Pine Bush, and across Sullivan County, NY. Free strategy call.",
   bookingUrl: "https://calendar.app.google/8PbpkbSVL3EtkQo2A",
   phoneDisplay: "+1 (717) 808-6050",
   phoneHref: "tel:+17178086050",
@@ -15,6 +37,8 @@ export const site = {
 
 export const hero = {
   headline: "We build digital brands that feel impossible to ignore.",
+  locationLine:
+    "Proudly serving Sullivan County — Monticello, Wurtsboro, Bloomingburg, Pine Bush, and beyond.",
   subheadline:
     "Premium websites, branding systems, and AI-powered growth infrastructure for ambitious businesses in the United States, Chile, and Colombia.",
 };
@@ -42,7 +66,7 @@ export type WhatWeBuildKey = "websites" | "brand" | "content" | "automation";
 
 export type WhatWeBuildItem = {
   key: WhatWeBuildKey;
-  num: string;
+  Icon: LucideIcon;
   title: string;
   desc: string;
   bullets: string[];
@@ -51,31 +75,31 @@ export type WhatWeBuildItem = {
 export const whatWeBuild: WhatWeBuildItem[] = [
   {
     key: "websites",
-    num: "01",
-    title: "High-Converting Websites",
-    desc: "Custom-built, editorial-quality sites engineered to turn visitors into customers — not just look good.",
-    bullets: ["UX/UI Design", "Custom Development", "Speed & SEO", "Conversion-Focused"],
+    Icon: Globe,
+    title: "Websites That Work While You Sleep",
+    desc: "A site that loads fast, looks great on any phone, and turns visitors into customers — not just another pretty page.",
+    bullets: ["Custom Design", "Mobile-Friendly", "Built to Convert"],
   },
   {
     key: "brand",
-    num: "02",
-    title: "Brand Identity Systems",
-    desc: "A complete visual foundation — logo, palette, type, and guidelines — built to hold up as you scale.",
-    bullets: ["Logo & Identity", "Design Systems", "Brand Guidelines", "Print & Packaging"],
+    Icon: Palette,
+    title: "A Brand People Remember",
+    desc: "Your logo, colors, and look — all designed to work together, so your business looks just as sharp on a business card as it does online.",
+    bullets: ["Logo Design", "Brand Guidelines", "Print Materials"],
   },
   {
     key: "content",
-    num: "03",
-    title: "Content & Social Assets",
-    desc: "Consistent, on-brand content across every channel — planned, designed, and published on schedule.",
-    bullets: ["Content Strategy", "Feed & Story Design", "Copywriting", "Paid Creative"],
+    Icon: Share2,
+    title: "Content That Shows Up Consistently",
+    desc: "Posts, stories, and captions — planned and designed ahead of time, so your brand stays active without you having to think about it daily.",
+    bullets: ["Social Media", "Copywriting", "Content Calendar"],
   },
   {
     key: "automation",
-    num: "04",
-    title: "Automation & AI Workflows",
-    desc: "Lead capture, follow-up, and reporting that run themselves — so nothing falls through the cracks.",
-    bullets: ["Lead Automation", "AI-Assisted Workflows", "CRM & Email", "Reporting Dashboards"],
+    Icon: Zap,
+    title: "Follow-Ups That Never Sleep",
+    desc: "When someone reaches out, they hear back right away — automatically. No lead waits, no message gets lost.",
+    bullets: ["Instant Follow-Up", "Easy Reporting", "Never Miss a Lead"],
   },
 ];
 
@@ -150,35 +174,106 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export type GrowthStackItem = {
-  name: string;
-  outcome: string;
+  Icon: LucideIcon;
+  title: string;
+  desc: string;
 };
 
 export const growthStack: GrowthStackItem[] = [
   {
-    name: "Next.js",
-    outcome: "Pages that load instantly and rank — enterprise-grade performance out of the box.",
+    Icon: Zap,
+    title: "Lightning-Fast Sites",
+    desc: "Your website loads instantly — on any device, anywhere.",
   },
   {
-    name: "Tailwind CSS",
-    outcome: "A consistent, on-brand design system that scales without slowing development down.",
+    Icon: Search,
+    title: "Built to Be Found",
+    desc: "Every site is structured to show up on Google from day one.",
   },
   {
-    name: "Vercel",
-    outcome: "Global edge deployment with zero-downtime releases, so your site is fast everywhere.",
+    Icon: MessageCircle,
+    title: "Follow-Ups That Never Sleep",
+    desc: "New leads get an immediate response — automated, but personal.",
   },
   {
-    name: "Resend",
-    outcome: "Reliable transactional email so every lead and client update actually lands.",
+    Icon: BarChart3,
+    title: "Know What's Working",
+    desc: "Simple, clear reporting — no confusing dashboards.",
+  },
+];
+
+export const industriesSection = {
+  heading: "Specialized Marketing for Every Industry",
+  subheading:
+    "From home services to healthcare, we build industry-specific strategies that generate real leads and revenue for businesses across Sullivan County — Monticello, Wurtsboro, Bloomingburg, Pine Bush, and beyond.",
+};
+
+export type IndustryItem = {
+  Icon: LucideIcon;
+  name: string;
+  desc: string;
+};
+
+export const industries: IndustryItem[] = [
+  {
+    Icon: HardHat,
+    name: "Construction",
+    desc: "More bids, more projects, and a dominant local presence for general contractors and specialty trades across Sullivan County.",
   },
   {
-    name: "Apify",
-    outcome:
-      "Automated data extraction and monitoring that powers lead gen and competitive insight.",
+    Icon: Trees,
+    name: "Landscaping",
+    desc: "Year-round leads for lawn care and landscaping companies — from spring cleanups to winter snow removal contracts.",
   },
   {
-    name: "Claude Code",
-    outcome: "AI-assisted development that ships features faster without cutting quality corners.",
+    Icon: Home,
+    name: "Roofing",
+    desc: "High-intent roofing leads, storm-season surge campaigns, and a Google presence that books estimates daily — built for Catskills winters and ice-dam season.",
+  },
+  {
+    Icon: Wrench,
+    name: "Plumbing",
+    desc: "Emergency call capture, scheduled service bookings, and steady leads for Sullivan County plumbers, day or night.",
+  },
+  {
+    Icon: Wind,
+    name: "HVAC",
+    desc: "Seasonal surge campaigns, maintenance agreement marketing, and year-round lead generation — built for hot summers and cold Catskills winters.",
+  },
+  {
+    Icon: Zap,
+    name: "Electrician",
+    desc: "Panel upgrade leads, residential service calls, and commercial project inquiries for local electrical contractors.",
+  },
+  {
+    Icon: UtensilsCrossed,
+    name: "Restaurant",
+    desc: "More diners, more online orders, and a loyal local following for Sullivan County restaurants through social and SEO.",
+  },
+  {
+    Icon: Stethoscope,
+    name: "Medical & Healthcare",
+    desc: "Compliant patient acquisition strategies that grow local practices and fill appointment calendars.",
+  },
+  {
+    Icon: Scale,
+    name: "Legal",
+    desc: "More qualified consultations and page-1 rankings for Sullivan County law firms, across every practice area.",
+  },
+  {
+    Icon: Building2,
+    name: "Real Estate",
+    desc: "More buyer and seller leads, a recognized personal brand, and a CRM system that never lets a deal slip away.",
+  },
+  {
+    Icon: Car,
+    name: "Auto Repair",
+    desc: "More cars in your bay, a 5-star Google reputation, and a loyal customer base that keeps coming back.",
+  },
+  {
+    Icon: Dumbbell,
+    name: "Fitness & Wellness",
+    desc: "Year-round membership growth, powerful social content, and retention systems for gyms and studios.",
   },
 ];
 

@@ -38,8 +38,6 @@ export function HeroBackground() {
         </video>
       )}
 
-      <div className="bg-cream/55 absolute inset-0" />
-      <div className="from-cream/85 absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent" />
       <div className="from-cream absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t to-transparent" />
     </div>
   );

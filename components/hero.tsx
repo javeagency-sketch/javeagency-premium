@@ -20,22 +20,31 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="text-terracotta mb-8 inline-block text-xs font-semibold tracking-[0.24em] uppercase"
+            className="text-clay mb-8 inline-block text-xs font-semibold tracking-[0.24em] uppercase"
           >
             Design · Strategy · Growth
           </motion.span>
 
           <RevealMask>
-            <h1 className="mb-8 font-serif text-5xl leading-[1.02] font-medium tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-cream mb-5 font-serif text-5xl leading-[1.02] font-medium tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
               {hero.headline}
             </h1>
           </RevealMask>
 
           <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
+            className="text-clay mb-8 text-sm font-semibold tracking-[0.02em] md:text-base"
+          >
+            {hero.locationLine}
+          </motion.p>
+
+          <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-            className="text-ink-soft mx-auto mb-14 max-w-2xl text-lg leading-relaxed md:text-xl"
+            className="text-cream/75 mx-auto mb-14 max-w-2xl text-lg leading-relaxed md:text-xl"
           >
             {hero.subheadline}
           </motion.p>
@@ -56,13 +65,13 @@ export function Hero() {
             </MagneticLink>
             <Link
               href="/work"
-              className="border-line text-ink hover:border-terracotta hover:text-terracotta-dark w-full rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
+              className="border-cream/30 text-cream hover:border-clay hover:text-clay w-full rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
               View Selected Work
             </Link>
             <MagneticLink
               href={site.phoneHref}
-              className="border-line text-ink hover:border-terracotta hover:text-terracotta-dark inline-flex w-full items-center justify-center gap-2 rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
+              className="border-cream/30 text-cream hover:border-clay hover:text-clay inline-flex w-full items-center justify-center gap-2 rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
               <Phone size={14} />
               Call Now

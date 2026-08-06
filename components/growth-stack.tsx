@@ -9,7 +9,7 @@ export function GrowthStack() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <RevealMask className="mb-20 max-w-2xl md:mb-28">
           <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-            The JAVE Growth Stack
+            Built to Perform, Not Just Look Good
           </span>
           <h2 className="text-paper mb-6 text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
             Modern infrastructure, built for outcomes.
@@ -20,16 +20,15 @@ export function GrowthStack() {
           </p>
         </RevealMask>
 
-        <RevealGroup className="border-paper/12 border-t">
+        <RevealGroup className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {growthStack.map((item) => (
-            <RevealItem key={item.name}>
-              <HoverLift className="group border-paper/12 hover:border-terracotta/50 border-b py-10 transition-colors duration-500 md:py-12">
-                <div className="flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between md:gap-16">
-                  <h3 className="text-paper font-serif text-2xl tracking-tight md:w-1/4 md:text-3xl">
-                    {item.name}
-                  </h3>
-                  <p className="text-paper/65 text-lg leading-relaxed md:w-1/2">{item.outcome}</p>
-                </div>
+            <RevealItem key={item.title}>
+              <HoverLift className="group border-paper/12 hover:border-terracotta/50 h-full rounded-xl border p-6 transition-colors duration-500 md:p-8">
+                <item.Icon className="text-terracotta mb-5" size={28} strokeWidth={1.75} />
+                <h3 className="text-paper mb-2 text-lg leading-[1.15] font-medium tracking-tight md:text-xl">
+                  {item.title}
+                </h3>
+                <p className="text-paper/65 text-sm leading-relaxed md:text-base">{item.desc}</p>
               </HoverLift>
             </RevealItem>
           ))}

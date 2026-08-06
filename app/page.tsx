@@ -2,6 +2,7 @@ import { Hero } from "@/components/hero";
 import { TrustMetrics } from "@/components/trust-metrics";
 import { AboutTeaser } from "@/components/about-teaser";
 import { WhatWeBuild } from "@/components/what-we-build";
+import { Industries } from "@/components/industries";
 import { Process } from "@/components/process";
 import { SelectedWork } from "@/components/selected-work";
 import { GrowthStack } from "@/components/growth-stack";
@@ -15,6 +16,7 @@ export default function Home() {
       <TrustMetrics />
       <AboutTeaser />
       <WhatWeBuild />
+      <Industries />
       <Process />
       <SelectedWork />
       <GrowthStack />

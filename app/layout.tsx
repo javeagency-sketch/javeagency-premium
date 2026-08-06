@@ -21,10 +21,12 @@ const inter = Inter({
   display: "swap",
 });
 
+const seoTitle = "Javé Agency | Marketing & Web Design Agency — Sullivan County, NY";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: seoTitle,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: seoTitle,
     description: site.description,
     url: siteUrl,
     locale: "en_US",
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    title: seoTitle,
     description: site.description,
     images: ["/og-image.png"],
   },
@@ -63,7 +65,16 @@ const jsonLd = {
   description: site.description,
   url: siteUrl,
   image: `${siteUrl}/og-image.png`,
-  areaServed: ["United States", "Chile", "Colombia"],
+  areaServed: [
+    "Sullivan County, NY",
+    "Monticello, NY",
+    "Wurtsboro, NY",
+    "Bloomingburg, NY",
+    "Pine Bush, NY",
+    "United States",
+    "Chile",
+    "Colombia",
+  ],
   sameAs: [site.instagramUrl],
 };
 

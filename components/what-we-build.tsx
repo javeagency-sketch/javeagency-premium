@@ -25,8 +25,8 @@ export function WhatWeBuild() {
               key={item.key}
               className="border-line bg-paper w-[82%] shrink-0 snap-center rounded-xl border p-7"
             >
-              <div className="mb-5 flex items-baseline gap-4">
-                <span className="text-terracotta font-serif text-lg">{item.num}</span>
+              <div className="mb-5 flex items-center gap-4">
+                <item.Icon className="text-terracotta shrink-0" size={24} strokeWidth={1.75} />
                 <h3 className="text-2xl leading-[1.05] font-medium tracking-tight">{item.title}</h3>
               </div>
               <p className="text-ink-soft mb-4 text-base leading-relaxed">{item.desc}</p>
@@ -44,8 +44,12 @@ export function WhatWeBuild() {
               <RevealItem key={item.key}>
                 <HoverLift className="group border-line hover:border-terracotta/50 border-b py-12 transition-colors duration-500 md:py-16">
                   <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-16">
-                    <div className="flex items-baseline gap-6 md:w-2/5">
-                      <span className="text-terracotta font-serif text-lg">{item.num}</span>
+                    <div className="flex items-center gap-6 md:w-2/5">
+                      <item.Icon
+                        className="text-terracotta shrink-0"
+                        size={28}
+                        strokeWidth={1.75}
+                      />
                       <h3 className="text-3xl leading-[1.05] font-medium tracking-tight md:text-4xl">
                         {item.title}
                       </h3>

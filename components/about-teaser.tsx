@@ -10,10 +10,10 @@ export function AboutTeaser() {
             Built for Ambitious Businesses
           </span>
           <p className="text-2xl leading-relaxed font-medium tracking-tight text-balance md:text-3xl">
-            JAVE AGENCY is a creative and growth-focused agency operating across Chile, the United
-            States, and Colombia. We combine premium design, modern development, and AI-powered
-            automation to help businesses look more established, perform faster, and convert better
-            online.
+            JAVE AGENCY is a remote marketing agency and web design studio serving Monticello, NY
+            and the wider Sullivan County Catskills region, alongside clients in Chile and
+            Colombia. We combine premium design, modern development, and AI-powered automation to
+            help businesses look more established, perform faster, and convert better online.
           </p>
           <Link
             href="/about"
