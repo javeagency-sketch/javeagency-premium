@@ -9,7 +9,7 @@ export function WorkProjectBlock({
   project,
   reversed,
 }: {
-  project: WorkProject;
+  project: Partial<WorkProject> & Pick<WorkProject, "slug" | "name" | "image" | "alt">;
   reversed: boolean;
 }) {
   return (
@@ -31,43 +31,55 @@ export function WorkProjectBlock({
       </div>
 
       <div className={reversed ? "md:order-1" : undefined}>
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <span className="text-terracotta text-xs font-semibold tracking-[0.2em] uppercase">
-            {project.industry}
-          </span>
-          <span className="text-ink-soft/60 text-xs">{project.year}</span>
-        </div>
+        {(project.industry || project.year) && (
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            {project.industry && (
+              <span className="text-terracotta text-xs font-semibold tracking-[0.2em] uppercase">
+                {project.industry}
+              </span>
+            )}
+            {project.year && <span className="text-ink-soft/60 text-xs">{project.year}</span>}
+          </div>
+        )}
         <h2 className="mb-5 text-3xl leading-[1.05] font-medium tracking-tight md:text-4xl">
           {project.name}
         </h2>
-        <p className="text-ink-soft mb-7 max-w-lg text-lg leading-relaxed">{project.overview}</p>
+        {project.overview && (
+          <p className="text-ink-soft mb-7 max-w-lg text-lg leading-relaxed">{project.overview}</p>
+        )}
 
-        <div className="mb-7 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <span className="text-ink-soft mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
-              Services Provided
-            </span>
-            <ul className="space-y-1.5">
-              {project.servicesProvided.map((s) => (
-                <li key={s} className="text-ink-soft text-sm">
-                  {s}
-                </li>
-              ))}
-            </ul>
+        {((project.servicesProvided?.length ?? 0) > 0 || (project.results?.length ?? 0) > 0) && (
+          <div className="mb-7 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {(project.servicesProvided?.length ?? 0) > 0 && (
+              <div>
+                <span className="text-ink-soft mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
+                  Services Provided
+                </span>
+                <ul className="space-y-1.5">
+                  {project.servicesProvided!.map((s) => (
+                    <li key={s} className="text-ink-soft text-sm">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {(project.results?.length ?? 0) > 0 && (
+              <div>
+                <span className="text-terracotta mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
+                  Results
+                </span>
+                <ul className="space-y-1.5">
+                  {project.results!.map((r) => (
+                    <li key={r} className="text-ink-soft text-sm">
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          <div>
-            <span className="text-terracotta mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
-              Results
-            </span>
-            <ul className="space-y-1.5">
-              {project.results.map((r) => (
-                <li key={r} className="text-ink-soft text-sm">
-                  {r}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
     </motion.article>
   );

@@ -9,11 +9,13 @@ import {
   aboutHero,
   aboutStory,
   foundersSection,
-  founders,
+  founders as staticFounders,
   differentiators,
   beforeAfter,
   aboutCta,
 } from "@/lib/about";
+import { getTeamMembers } from "@/lib/sanity.queries";
+import { urlForImage } from "@/lib/sanity.image";
 
 const description =
   "JAVE AGENCY is a web design, branding, and marketing agency working with businesses in the United States, Chile, and Colombia — premium websites and digital growth, built by one team.";
@@ -26,7 +28,23 @@ export const metadata: Metadata = {
   twitter: { title: "About — Javé Agency", description },
 };
 
-export default function AboutPage() {
+const fallbackGradients = ["from-[#C7784E] to-[#8F3F20]", "from-[#264653] to-[#16262C]"];
+
+export default async function AboutPage() {
+  const cmsMembers = await getTeamMembers();
+
+  const founders =
+    cmsMembers.length > 0
+      ? cmsMembers.map((member, i) => ({
+          name: member.name,
+          role: member.role ?? "",
+          initial: member.name.charAt(0).toUpperCase(),
+          bio: member.bio ?? "",
+          photo: urlForImage(member.profileImage) ?? "/images/team/placeholder.jpg",
+          gradient: fallbackGradients[i % fallbackGradients.length],
+        }))
+      : staticFounders;
+
   return (
     <>
       <PageHero

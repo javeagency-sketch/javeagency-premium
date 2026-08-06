@@ -5,7 +5,8 @@ import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
 import { Process } from "@/components/process";
 import { Reveal, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
-import { servicesHero, services } from "@/lib/services";
+import { servicesHero, services as staticServices } from "@/lib/services";
+import { getServices } from "@/lib/sanity.queries";
 
 const description =
   "Web design, branding, automation, and content services for businesses in the United States, Chile, and Colombia — one team, working as your web design agency, branding agency, and growth partner.";
@@ -18,7 +19,18 @@ export const metadata: Metadata = {
   twitter: { title: "Services — Javé Agency", description },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const cmsServices = await getServices();
+  const cmsBySlug = new Map(cmsServices.map((s) => [s.slug.current, s]));
+
+  // The four service detail routes (app/services/[slug]/page.tsx) are
+  // static — the CMS only overrides the tagline shown here, it doesn't add
+  // new listing entries, so every "Learn more" link keeps resolving.
+  const services = staticServices.map((service) => ({
+    ...service,
+    tagline: cmsBySlug.get(service.slug)?.shortDescription || service.tagline,
+  }));
+
   return (
     <>
       <PageHero

@@ -8,11 +8,19 @@ import { SelectedWork } from "@/components/selected-work";
 import { GrowthStack } from "@/components/growth-stack";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
+import { getSiteSettings } from "@/lib/sanity.queries";
 
-export default function Home() {
+export default async function Home() {
+  const settings = await getSiteSettings();
+
   return (
     <>
-      <Hero />
+      <Hero
+        headline={settings?.heroHeading || undefined}
+        subheadline={settings?.heroSubheading || undefined}
+        primaryCtaText={settings?.primaryCtaText || undefined}
+        secondaryCtaText={settings?.secondaryCtaText || undefined}
+      />
       <TrustMetrics />
       <AboutTeaser />
       <WhatWeBuild />

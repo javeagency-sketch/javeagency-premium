@@ -5,7 +5,14 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
 import { HoverLift, Reveal, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
-import { templatesHero, templates, templatesCta } from "@/lib/templates";
+import {
+  templatesHero,
+  templates as staticTemplates,
+  templatesCta,
+  type Template,
+} from "@/lib/templates";
+import { getTemplates } from "@/lib/sanity.queries";
+import { urlForImage } from "@/lib/sanity.image";
 
 const description =
   "Premium, industry-specific website templates from JAVE AGENCY — the same design standard as our custom client work, built for businesses in the United States, Chile, and Colombia.";
@@ -18,7 +25,25 @@ export const metadata: Metadata = {
   twitter: { title: "Templates — Javé Agency", description },
 };
 
-export default function TemplatesPage() {
+export default async function TemplatesPage() {
+  const cmsTemplates = await getTemplates();
+
+  // CMS templates have no detailSlug/screenshots (not part of that schema),
+  // so they always render with the "Coming Soon" state; the existing
+  // static entries keep their live preview pages working as-is.
+  const templates: Template[] = [
+    ...cmsTemplates.map((t) => ({
+      slug: t.slug.current,
+      name: t.title,
+      category: t.category ?? "",
+      description: t.shortDescription ?? "",
+      status: "coming-soon" as const,
+      image: urlForImage(t.previewImages?.[0]) ?? "/og-image.png",
+      alt: t.title,
+    })),
+    ...staticTemplates,
+  ];
+
   return (
     <>
       <PageHero

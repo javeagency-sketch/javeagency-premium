@@ -8,7 +8,17 @@ import { MagneticLink } from "@/components/ui/magnetic-link";
 import { EASE, RevealMask } from "@/components/ui/reveal";
 import { hero, site } from "@/lib/content";
 
-export function Hero() {
+export function Hero({
+  headline = hero.headline,
+  subheadline = hero.subheadline,
+  primaryCtaText = "Book a Strategy Call",
+  secondaryCtaText = "View Selected Work",
+}: {
+  headline?: string;
+  subheadline?: string;
+  primaryCtaText?: string;
+  secondaryCtaText?: string;
+} = {}) {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
       <HeroBackground />
@@ -27,7 +37,7 @@ export function Hero() {
 
           <RevealMask>
             <h1 className="text-cream mb-5 font-serif text-5xl leading-[1.02] font-medium tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
-              {hero.headline}
+              {headline}
             </h1>
           </RevealMask>
 
@@ -46,7 +56,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
             className="text-cream/75 mx-auto mb-14 max-w-2xl text-lg leading-relaxed md:text-xl"
           >
-            {hero.subheadline}
+            {subheadline}
           </motion.p>
 
           <motion.div
@@ -61,13 +71,13 @@ export function Hero() {
               rel="noopener"
               className="bg-terracotta text-paper hover:bg-terracotta-dark w-full rounded-sm px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
-              Book a Strategy Call
+              {primaryCtaText}
             </MagneticLink>
             <Link
               href="/work"
               className="border-cream/30 text-cream hover:border-clay hover:text-clay w-full rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
-              View Selected Work
+              {secondaryCtaText}
             </Link>
             <MagneticLink
               href={site.phoneHref}

@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { MotionProvider } from "@/components/motion-provider";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+import { SiteChrome } from "@/components/site-chrome";
 import { site, siteUrl } from "@/lib/content";
 import "./globals.css";
 
@@ -89,9 +88,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         <MotionProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </MotionProvider>
       </body>
     </html>

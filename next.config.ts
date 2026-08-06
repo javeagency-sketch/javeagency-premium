@@ -24,6 +24,27 @@ const cspHeader = `
   .replace(/\s{2,}/g, " ")
   .trim();
 
+// The embedded Sanity Studio (/studio) needs its own, more permissive CSP —
+// it loads its own inline styles/scripts and talks to the Sanity API and
+// CDN. Next applies the last matching header for a given key, so this
+// overrides cspHeader above only for /studio routes.
+const studioCspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob: https://cdn.sanity.io;
+  media-src 'self' https://cdn.sanity.io;
+  font-src 'self' data:;
+  connect-src 'self' https://*.api.sanity.io https://*.apicdn.sanity.io wss://*.api.sanity.io https://cdn.sanity.io;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+`
+  .replace(/\s{2,}/g, " ")
+  .trim();
+
 const orangeCountySlugs = [
   "construction",
   "landscaping",
@@ -40,6 +61,9 @@ const orangeCountySlugs = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
+  },
   async redirects() {
     return orangeCountySlugs.map((industry) => ({
       source: `/services/${industry}-marketing-orange-county`,
@@ -61,6 +85,14 @@ const nextConfig: NextConfig = {
               "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
           },
           { key: "Content-Security-Policy", value: cspHeader },
+        ],
+      },
+      {
+        source: "/studio/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Content-Security-Policy", value: studioCspHeader },
         ],
       },
     ];

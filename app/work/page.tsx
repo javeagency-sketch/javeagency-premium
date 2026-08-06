@@ -3,7 +3,9 @@ import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
 import { WorkProjectBlock } from "@/components/work-project-block";
 import { RevealMask } from "@/components/ui/reveal";
-import { workHero, workProjects } from "@/lib/work";
+import { workHero, workProjects as staticWorkProjects } from "@/lib/work";
+import { getWorkProjects } from "@/lib/sanity.queries";
+import { urlForImage } from "@/lib/sanity.image";
 
 const description =
   "Case studies from JAVE AGENCY's work with businesses in the United States, Chile, and Colombia — real e-commerce, B2B, branding, and entertainment projects.";
@@ -16,7 +18,28 @@ export const metadata: Metadata = {
   twitter: { title: "Work — Javé Agency", description },
 };
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const cmsProjects = await getWorkProjects();
+
+  // CMS-authored projects (no rich overview/results copy in that schema)
+  // are shown alongside the existing case studies rather than replacing
+  // them, so the page never goes empty while content is being migrated in.
+  const workProjects = [
+    ...cmsProjects.map((p) => ({
+      slug: p.slug.current,
+      industry: p.category ?? "",
+      name: p.title,
+      year: "",
+      overview: p.shortDescription ?? "",
+      servicesProvided: [],
+      results: [],
+      href: p.externalUrl,
+      image: urlForImage(p.coverImage) ?? "/og-image.png",
+      alt: p.title,
+    })),
+    ...staticWorkProjects,
+  ];
+
   return (
     <>
       <PageHero
