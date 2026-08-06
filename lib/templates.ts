@@ -68,6 +68,18 @@ export const templates: Template[] = [
     detailSlug: "audiovisual",
     demoUrl: "https://miguel-osorio-demo.vercel.app",
   },
+  {
+    slug: "burger-scroll",
+    name: "Restaurant",
+    category: "Restaurant & Food",
+    description:
+      "A fast-paced, appetite-first template for restaurants and quick-service brands — scroll-driven menu highlights, bold food photography, and an order-now flow built in.",
+    status: "coming-soon",
+    image: "/templates/restaurant.jpg",
+    alt: "Bold red-orange concept mockup for the Restaurant template, featuring a stacked burger illustration",
+    detailSlug: "restaurant",
+    demoUrl: "https://burger-scroll-demo.vercel.app",
+  },
 ];
 
 export const templatesCta = {
