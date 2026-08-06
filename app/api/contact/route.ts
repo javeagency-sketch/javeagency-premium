@@ -57,9 +57,10 @@ export async function POST(request: Request) {
   try {
     await sendContactEmails(parsed.data);
   } catch (error) {
-    if (process.env.NODE_ENV !== "production") {
-      console.error("Contact form send error:", error);
-    }
+    // Always log server-side so Vercel function logs show the real cause
+    // (e.g. missing env var, unverified domain). The client only ever
+    // sees the generic message below.
+    console.error("Contact form send error:", error instanceof Error ? error.message : error);
     return NextResponse.json({ ok: false, message: GENERIC_ERROR }, { status: 500 });
   }
 

@@ -31,7 +31,7 @@ All copy, service/portfolio/FAQ data lives in [`lib/content.ts`](./lib/content.t
 
 ## Contact form
 
-`app/actions.ts` has a server action ready for [Resend](https://resend.com): set `RESEND_API_KEY` and `CONTACT_TO_EMAIL` in `.env.local` and uncomment the `resend.emails.send(...)` call.
+The contact form is handled by `app/api/contact/route.ts` via [Resend](https://resend.com): set `RESEND_API_KEY`, `CONTACT_EMAIL`, and `RESEND_FROM_EMAIL` in `.env.local`.
 
 ## Analytics
 

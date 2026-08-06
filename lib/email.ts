@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import type { ContactFormInput } from "@/lib/validation";
 
-const FROM_ADDRESS = `Javé Agency <${process.env.PUBLIC_FROM_EMAIL ?? "hello@javeagency.com"}>`;
+const FROM_ADDRESS = `Javé Agency <${process.env.RESEND_FROM_EMAIL ?? "hello@javeagency.com"}>`;
 
 let resendClient: Resend | null = null;
 
@@ -94,9 +94,9 @@ function autoReplyHtml(input: ContactFormInput): string {
 }
 
 export async function sendContactEmails(input: ContactFormInput): Promise<void> {
-  const toAddress = process.env.CONTACT_TO_EMAIL;
+  const toAddress = process.env.CONTACT_EMAIL;
   if (!toAddress) {
-    throw new Error("CONTACT_TO_EMAIL is not configured.");
+    throw new Error("CONTACT_EMAIL is not configured.");
   }
 
   const resend = getResendClient();
@@ -121,6 +121,6 @@ export async function sendContactEmails(input: ContactFormInput): Promise<void> 
     // Safe to log: Resend's error object describes delivery/config
     // failures (e.g. unverified domain), never the submitted form content.
     console.error("Resend send failed:", error);
-    throw new Error("Failed to send contact email.");
+    throw new Error(`Failed to send contact email: ${error.name} — ${error.message}`);
   }
 }
