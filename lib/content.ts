@@ -31,8 +31,8 @@ export const site = {
   phoneDisplay: "+1 (717) 808-6050",
   phoneHref: "tel:+17178086050",
   whatsappUrl: "https://wa.me/17178086050",
-  instagramUrl: "https://www.instagram.com/jave.marketing/",
-  email: "hello@javeagency.com",
+  instagramUrl: "https://instagram.com/jave.agency",
+  email: "jave.agency@gmail.com",
 };
 
 export const hero = {
