@@ -4,14 +4,23 @@ import { motion } from "motion/react";
 import { EASE } from "@/components/ui/reveal";
 import { PortfolioImage } from "@/components/portfolio-image";
 import type { WorkProject } from "@/lib/work";
+import type { Locale } from "@/lib/i18n";
+
+const copy = {
+  en: { services: "Services Provided", results: "Results" },
+  es: { services: "Servicios Realizados", results: "Resultados" },
+};
 
 export function WorkProjectBlock({
   project,
   reversed,
+  locale = "en",
 }: {
   project: Partial<WorkProject> & Pick<WorkProject, "slug" | "name" | "image" | "alt">;
   reversed: boolean;
+  locale?: Locale;
 }) {
+  const t = copy[locale];
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
@@ -53,7 +62,7 @@ export function WorkProjectBlock({
             {(project.servicesProvided?.length ?? 0) > 0 && (
               <div>
                 <span className="text-ink-soft mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
-                  Services Provided
+                  {t.services}
                 </span>
                 <ul className="space-y-1.5">
                   {project.servicesProvided!.map((s) => (
@@ -67,7 +76,7 @@ export function WorkProjectBlock({
             {(project.results?.length ?? 0) > 0 && (
               <div>
                 <span className="text-terracotta mb-3 block text-[11px] font-semibold tracking-[0.14em] uppercase">
-                  Results
+                  {t.results}
                 </span>
                 <ul className="space-y-1.5">
                   {project.results!.map((r) => (

@@ -3,6 +3,49 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { budgetRanges, projectTypes } from "@/lib/content";
+import { budgetRanges as budgetRangesEs, projectTypes as projectTypesEs } from "@/lib/content.es";
+import type { Locale } from "@/lib/i18n";
+
+const copy = {
+  en: {
+    name: "Name",
+    email: "Email",
+    company: "Company",
+    projectType: "Project type",
+    budgetRange: "Budget range",
+    message: "Message",
+    selectOption: "Select an option",
+    consent: "I agree that JAVE AGENCY may use the information provided to respond to my inquiry.",
+    send: "Send Message",
+    sending: "Sending…",
+    genericError: "Something went wrong. Please check your connection and try again.",
+    defaultError: "Something went wrong. Please try again.",
+    defaultSuccess: "Thanks — we'll be in touch shortly.",
+    disclaimerPre:
+      "Submitting this form is a request for information and does not create a client, contractual, or business relationship. Any information you share is handled according to our",
+    privacyLabel: "Privacy Policy",
+    privacyHref: "/privacy-policy",
+  },
+  es: {
+    name: "Nombre",
+    email: "Correo electrónico",
+    company: "Empresa",
+    projectType: "Tipo de proyecto",
+    budgetRange: "Rango de presupuesto",
+    message: "Mensaje",
+    selectOption: "Selecciona una opción",
+    consent: "Acepto que JAVE AGENCY use la información proporcionada para responder mi consulta.",
+    send: "Enviar Mensaje",
+    sending: "Enviando…",
+    genericError: "Algo salió mal. Revisa tu conexión e intenta de nuevo.",
+    defaultError: "Algo salió mal. Intenta de nuevo.",
+    defaultSuccess: "Gracias — nos pondremos en contacto pronto.",
+    disclaimerPre:
+      "Enviar este formulario es una solicitud de información y no crea una relación de cliente, contractual o comercial. La información que compartas se maneja según nuestra",
+    privacyLabel: "Política de Privacidad",
+    privacyHref: "/privacy-policy",
+  },
+};
 
 type FormValues = {
   name: string;
@@ -28,11 +71,14 @@ const initialValues: FormValues = {
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ContactForm() {
+export function ContactForm({ locale = "en" }: { locale?: Locale } = {}) {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const t = copy[locale];
+  const projectTypeOptions = locale === "es" ? projectTypesEs : projectTypes;
+  const budgetRangeOptions = locale === "es" ? budgetRangesEs : budgetRanges;
 
   const pending = status === "sending";
 
@@ -56,17 +102,17 @@ export function ContactForm() {
 
       if (!res.ok) {
         setStatus("error");
-        setMessage(data.message || "Something went wrong. Please try again.");
+        setMessage(data.message || t.defaultError);
         setFieldErrors(data.fieldErrors ?? {});
         return;
       }
 
       setStatus("success");
-      setMessage(data.message || "Thanks — we'll be in touch shortly.");
+      setMessage(data.message || t.defaultSuccess);
       setValues(initialValues);
     } catch {
       setStatus("error");
-      setMessage("Something went wrong. Please check your connection and try again.");
+      setMessage(t.genericError);
     }
   }
 
@@ -88,7 +134,7 @@ export function ContactForm() {
       </div>
 
       <Field
-        label="Name"
+        label={t.name}
         name="name"
         required
         value={values.name}
@@ -96,7 +142,7 @@ export function ContactForm() {
         error={fieldErrors.name}
       />
       <Field
-        label="Email"
+        label={t.email}
         name="email"
         type="email"
         required
@@ -105,31 +151,33 @@ export function ContactForm() {
         error={fieldErrors.email}
       />
       <Field
-        label="Company"
+        label={t.company}
         name="company"
         value={values.company}
         onChange={(v) => update("company", v)}
         error={fieldErrors.company}
       />
       <SelectField
-        label="Project type"
+        label={t.projectType}
         name="projectType"
-        options={projectTypes}
+        options={projectTypeOptions}
         value={values.projectType}
         onChange={(v) => update("projectType", v)}
+        placeholder={t.selectOption}
       />
       <SelectField
-        label="Budget range"
+        label={t.budgetRange}
         name="budgetRange"
-        options={budgetRanges}
+        options={budgetRangeOptions}
         value={values.budgetRange}
         onChange={(v) => update("budgetRange", v)}
         className="sm:col-span-2"
+        placeholder={t.selectOption}
       />
 
       <label className="flex flex-col gap-2 text-sm sm:col-span-2">
         <span className="text-ink-soft">
-          Message <span className="text-terracotta">*</span>
+          {t.message} <span className="text-terracotta">*</span>
         </span>
         <textarea
           name="message"
@@ -159,8 +207,7 @@ export function ContactForm() {
           className="border-line text-terracotta mt-0.5 h-4 w-4 shrink-0 rounded"
         />
         <span className="text-ink-soft leading-relaxed">
-          I agree that JAVE AGENCY may use the information provided to respond to my inquiry.{" "}
-          <span className="text-terracotta">*</span>
+          {t.consent} <span className="text-terracotta">*</span>
         </span>
       </label>
       {fieldErrors.consent && (
@@ -175,7 +222,7 @@ export function ContactForm() {
           disabled={pending}
           className="bg-ink text-paper hover:bg-terracotta-dark w-full rounded-sm py-4 text-[13px] font-semibold tracking-[0.04em] uppercase transition-colors disabled:opacity-60 sm:w-auto sm:px-10"
         >
-          {pending ? "Sending…" : "Send Message"}
+          {pending ? t.sending : t.send}
         </button>
 
         {status !== "idle" && status !== "sending" && (
@@ -188,14 +235,12 @@ export function ContactForm() {
         )}
 
         <p className="text-ink-soft/80 mt-5 text-[12.5px] leading-relaxed">
-          Submitting this form is a request for information and does not create a client,
-          contractual, or business relationship. Any information you share is handled according to
-          our{" "}
+          {t.disclaimerPre}{" "}
           <Link
-            href="/privacy-policy"
+            href={t.privacyHref}
             className="decoration-line hover:text-terracotta-dark underline underline-offset-4"
           >
-            Privacy Policy
+            {t.privacyLabel}
           </Link>
           .
         </p>
@@ -252,6 +297,7 @@ function SelectField({
   value,
   onChange,
   className,
+  placeholder = "Select an option",
 }: {
   label: string;
   name: string;
@@ -259,6 +305,7 @@ function SelectField({
   value: string;
   onChange: (value: string) => void;
   className?: string;
+  placeholder?: string;
 }) {
   return (
     <label className={`flex flex-col gap-2 text-sm ${className ?? ""}`}>
@@ -270,7 +317,7 @@ function SelectField({
         className="border-line bg-paper focus:border-terracotta rounded-md border px-4 py-3 text-[15px] transition-colors outline-none"
       >
         <option value="" disabled>
-          Select an option
+          {placeholder}
         </option>
         {options.map((opt) => (
           <option key={opt} value={opt}>

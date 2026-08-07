@@ -26,21 +26,21 @@ export const site = {
   name: "Javé Agency",
   tagline: "Design, strategy and growth for ambitious businesses.",
   description:
-    "Javé Agency builds high-converting websites, branding, and digital marketing systems for businesses in Monticello, Wurtsboro, Bloomingburg, Pine Bush, and across Sullivan County, NY. Free strategy call.",
+    "Premium web design, local SEO, branding, and AI-powered marketing services for businesses in Monticello, Liberty, Wurtsboro, Bloomingburg, Rock Hill, and Sullivan County, NY.",
   bookingUrl: "https://calendar.app.google/8PbpkbSVL3EtkQo2A",
   phoneDisplay: "+1 (717) 808-6050",
   phoneHref: "tel:+17178086050",
   whatsappUrl: "https://wa.me/17178086050",
   instagramUrl: "https://instagram.com/jave.agency",
-  email: "jave.agency@gmail.com",
+  email: "hello@javeagency.com",
 };
 
 export const hero = {
-  headline: "We build digital brands that feel impossible to ignore.",
+  headline: "Web Design & SEO Agency in Sullivan County, NY",
   locationLine:
-    "Proudly serving Sullivan County — Monticello, Wurtsboro, Bloomingburg, Pine Bush, and beyond.",
+    "Proudly serving Sullivan County — Monticello, Liberty, Wurtsboro, Bloomingburg, Rock Hill, Woodridge, Fallsburg, Mamakating, and Pine Bush.",
   subheadline:
-    "Premium websites, branding systems, and AI-powered growth infrastructure for ambitious businesses across Sullivan County, Monticello, Wurtsboro, Bloomingburg, and the greater Catskills region.",
+    "Premium websites, local SEO, branding systems, and AI-powered digital marketing for businesses across Monticello, Liberty, Wurtsboro, Bloomingburg, Rock Hill, and the greater Sullivan County and Catskills region.",
 };
 
 export const legalLinks = [
@@ -158,7 +158,7 @@ export const growthStack: GrowthStackItem[] = [
 export const industriesSection = {
   heading: "Specialized Marketing for Every Industry",
   subheading:
-    "From home services to healthcare, we build industry-specific strategies that generate real leads and revenue for businesses across Sullivan County — Monticello, Wurtsboro, Bloomingburg, Pine Bush, and beyond.",
+    "From home services to healthcare, our marketing agency in the Catskills builds industry-specific strategies and local SEO that generate real leads and revenue for businesses across Sullivan County — Monticello, Liberty, Wurtsboro, Bloomingburg, Rock Hill, Woodridge, Fallsburg, Mamakating, and Pine Bush.",
 };
 
 export type IndustryItem = {

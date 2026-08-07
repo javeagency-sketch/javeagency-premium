@@ -5,9 +5,23 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealMask } from "@/components/ui/reveal";
 import { industries, industriesSection, type IndustryItem } from "@/lib/content";
+import {
+  industries as industriesEs,
+  industriesSection as industriesSectionEs,
+} from "@/lib/content.es";
+import type { Locale } from "@/lib/i18n";
 
-export function Industries() {
-  const mobileItems = industries.slice(0, 5);
+const copy = {
+  en: { moreServices: "+ Services", seeAll: "See All →", explore: "Explore →" },
+  es: { moreServices: "+ Servicios", seeAll: "Ver Todo →", explore: "Explorar →" },
+};
+
+export function Industries({ locale = "en" }: { locale?: Locale } = {}) {
+  const items = locale === "es" ? industriesEs : industries;
+  const section = locale === "es" ? industriesSectionEs : industriesSection;
+  const servicesHref = locale === "es" ? "/es/servicios" : "/services";
+  const t = copy[locale];
+  const mobileItems = items.slice(0, 5);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollByCard = (direction: "left" | "right") => {
@@ -24,28 +38,26 @@ export function Industries() {
         <div className="px-6">
           <RevealMask className="mb-14 max-w-2xl md:mb-20 lg:mb-28">
             <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-              {industriesSection.heading}
+              {section.heading}
             </h2>
-            <p className="text-ink-soft mt-6 text-lg leading-relaxed">
-              {industriesSection.subheading}
-            </p>
+            <p className="text-ink-soft mt-6 text-lg leading-relaxed">{section.subheading}</p>
           </RevealMask>
         </div>
 
         {/* Mobile: 5 cards + a "+ Services" card, swipeable */}
         <div className="-mx-6 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] md:hidden [&::-webkit-scrollbar]:hidden">
           {mobileItems.map((item) => (
-            <IndustryCard key={item.name} item={item} className="w-[82%]" />
+            <IndustryCard key={item.name} item={item} className="w-[82%]" exploreLabel={t.explore} />
           ))}
           <Link
-            href="/services"
+            href={servicesHref}
             className="border-line bg-paper flex w-[82%] shrink-0 snap-center flex-col items-center justify-center gap-2 rounded-xl border p-7 text-center"
           >
             <span className="text-2xl leading-[1.05] font-medium tracking-tight">
-              + Services
+              {t.moreServices}
             </span>
             <span className="text-terracotta-dark text-[13px] font-semibold tracking-[0.04em] uppercase">
-              See All →
+              {t.seeAll}
             </span>
           </Link>
         </div>
@@ -56,14 +68,20 @@ export function Industries() {
             ref={trackRef}
             className="[scrollbar-width:none] flex gap-6 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] lg:px-0 [&::-webkit-scrollbar]:hidden"
           >
-            {industries.map((item) => (
-              <IndustryCard key={item.name} item={item} className="md:w-[300px]" data-industry-card />
+            {items.map((item) => (
+              <IndustryCard
+                key={item.name}
+                item={item}
+                className="md:w-[300px]"
+                data-industry-card
+                exploreLabel={t.explore}
+              />
             ))}
           </div>
 
           <button
             type="button"
-            aria-label="Scroll industries left"
+            aria-label={locale === "es" ? "Desplazar industrias a la izquierda" : "Scroll industries left"}
             onClick={() => scrollByCard("left")}
             className="border-line bg-paper text-ink hover:bg-terracotta hover:text-paper hover:border-terracotta absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full border p-2.5 shadow-sm transition-colors lg:-left-5"
           >
@@ -71,7 +89,7 @@ export function Industries() {
           </button>
           <button
             type="button"
-            aria-label="Scroll industries right"
+            aria-label={locale === "es" ? "Desplazar industrias a la derecha" : "Scroll industries right"}
             onClick={() => scrollByCard("right")}
             className="border-line bg-paper text-ink hover:bg-terracotta hover:text-paper hover:border-terracotta absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 rounded-full border p-2.5 shadow-sm transition-colors lg:-right-5"
           >
@@ -86,10 +104,12 @@ export function Industries() {
 function IndustryCard({
   item,
   className,
+  exploreLabel = "Explore →",
   ...rest
 }: {
   item: IndustryItem;
   className?: string;
+  exploreLabel?: string;
   "data-industry-card"?: boolean;
 }) {
   return (
@@ -106,7 +126,7 @@ function IndustryCard({
         href={item.href}
         className="text-terracotta-dark hover:text-terracotta text-[13px] font-semibold tracking-[0.04em] uppercase transition-colors"
       >
-        Explore →
+        {exploreLabel}
       </Link>
     </div>
   );

@@ -6,9 +6,27 @@ import { useId, useState } from "react";
 import { EASE, Reveal, RevealMask } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 import { faqs, promises } from "@/lib/content";
+import { faqs as faqsEs, promises as promisesEs } from "@/lib/content.es";
+import type { Locale } from "@/lib/i18n";
 
-export function Faq() {
+const copy = {
+  en: {
+    eyebrow: "FAQ",
+    heading: "Questions we hear often.",
+    body: "Still wondering about something? Book a free discovery call and we'll answer everything in person.",
+  },
+  es: {
+    eyebrow: "Preguntas Frecuentes",
+    heading: "Preguntas que escuchamos seguido.",
+    body: "¿Aún tienes dudas? Agenda una llamada de descubrimiento gratuita y responderemos todo en persona.",
+  },
+};
+
+export function Faq({ locale = "en" }: { locale?: Locale } = {}) {
   const [open, setOpen] = useState<number | null>(0);
+  const items = locale === "es" ? faqsEs : faqs;
+  const promiseItems = locale === "es" ? promisesEs : promises;
+  const t = copy[locale];
 
   return (
     <>
@@ -16,19 +34,16 @@ export function Faq() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:px-8">
           <RevealMask>
             <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-              FAQ
+              {t.eyebrow}
             </span>
             <h2 className="mb-5 text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-              Questions we hear often.
+              {t.heading}
             </h2>
-            <p className="text-ink-soft max-w-[280px] text-lg leading-relaxed">
-              Still wondering about something? Book a free discovery call and we&apos;ll answer
-              everything in person.
-            </p>
+            <p className="text-ink-soft max-w-[280px] text-lg leading-relaxed">{t.body}</p>
           </RevealMask>
 
           <Reveal>
-            {faqs.map((item, i) => (
+            {items.map((item, i) => (
               <FaqItem
                 key={item.q}
                 item={item}
@@ -42,7 +57,7 @@ export function Faq() {
 
       <div className="border-line bg-paper border-t py-10">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-3 px-6 lg:px-8">
-          {promises.map((p) => (
+          {promiseItems.map((p) => (
             <span
               key={p}
               className="border-line text-ink-soft rounded-full border px-4 py-2 text-[12.5px]"

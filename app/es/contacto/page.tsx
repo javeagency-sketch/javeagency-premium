@@ -6,42 +6,43 @@ import { Reveal } from "@/components/ui/reveal";
 import { site, siteUrl } from "@/lib/content";
 
 const description =
-  "Get in touch with JAVE AGENCY — a web design and SEO agency serving Sullivan County, NY, Monticello, Liberty, and Wurtsboro, plus businesses across the United States, Chile, and Colombia.";
+  "Ponte en contacto con JAVE AGENCY — una agencia de diseño web y SEO al servicio de Sullivan County, NY, Monticello, Liberty y Wurtsboro, además de negocios en Estados Unidos, Chile y Colombia.";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contacto",
   description,
   alternates: {
-    canonical: "/contact",
+    canonical: "/es/contacto",
     languages: { en: `${siteUrl}/contact`, es: `${siteUrl}/es/contacto` },
   },
-  openGraph: { title: "Contact — Javé Agency", description, url: "/contact" },
-  twitter: { title: "Contact — Javé Agency", description },
+  openGraph: { title: "Contacto — Javé Agency", description, url: "/es/contacto" },
+  twitter: { title: "Contacto — Javé Agency", description },
 };
 
-export default function ContactPage() {
+export default function ContactPageEs() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        headline="Let's talk about your business."
-        subheadline="Tell us where you are today and where you want to be — we'll follow up with next steps, no obligation."
-        crumbs={[{ label: "Contact" }]}
+        eyebrow="Contacto"
+        headline="Hablemos sobre tu negocio."
+        subheadline="Cuéntanos dónde estás hoy y a dónde quieres llegar — te contactaremos con los siguientes pasos, sin compromiso."
+        crumbs={[{ label: "Contacto" }]}
+        locale="es"
       />
 
       <section className="bg-cream py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-8">
           <Reveal>
             <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-              Other Ways to Reach Us
+              Otras Formas de Contactarnos
             </span>
             <h2 className="mb-6 font-serif text-3xl leading-[1.05] font-medium tracking-tight">
-              Prefer a call or a quick message?
+              ¿Prefieres una llamada o un mensaje rápido?
             </h2>
             <p className="text-ink-soft mb-8 text-base leading-relaxed">
-              If a form isn&apos;t your style, book a free discovery call directly or reach us on
-              WhatsApp. We work across US, Chile, and Colombia time zones and typically respond
-              within one business day.
+              Si un formulario no es lo tuyo, agenda una llamada de descubrimiento gratuita
+              directamente o escríbenos por WhatsApp. Trabajamos en horarios de EE.UU., Chile y
+              Colombia y normalmente respondemos dentro de un día hábil.
             </p>
             <div className="flex flex-col gap-4">
               <MagneticLink
@@ -50,7 +51,7 @@ export default function ContactPage() {
                 rel="noopener"
                 className="bg-terracotta text-paper hover:bg-terracotta-dark w-full rounded-sm px-6 py-3.5 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors"
               >
-                Book a Discovery Call
+                Agendar una Llamada
               </MagneticLink>
               <MagneticLink
                 href={site.whatsappUrl}
@@ -58,7 +59,7 @@ export default function ContactPage() {
                 rel="noopener"
                 className="border-line text-ink hover:border-terracotta hover:text-terracotta-dark w-full rounded-sm border px-6 py-3.5 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors"
               >
-                WhatsApp Us
+                Escríbenos por WhatsApp
               </MagneticLink>
               <a
                 href={`mailto:${site.email}`}
@@ -70,7 +71,7 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal>
-            <ContactForm />
+            <ContactForm locale="es" />
           </Reveal>
         </div>
       </section>

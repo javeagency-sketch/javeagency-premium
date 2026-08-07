@@ -9,53 +9,36 @@ import {
   aboutHero,
   aboutStory,
   foundersSection,
-  founders as staticFounders,
+  founders,
   differentiators,
   beforeAfter,
   aboutCta,
-} from "@/lib/about";
-import { getTeamMembers } from "@/lib/sanity.queries";
-import { urlForImage } from "@/lib/sanity.image";
+} from "@/lib/about.es";
 import { siteUrl } from "@/lib/content";
 
 const description =
-  "JAVE AGENCY is a web design and SEO agency serving Sullivan County, NY and businesses in the United States, Chile, and Colombia — premium websites and digital growth, built by one team.";
+  "JAVE AGENCY es una agencia de diseño web y SEO al servicio de Sullivan County, NY y negocios en Estados Unidos, Chile y Colombia — sitios web premium y crecimiento digital, hechos por un solo equipo.";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Nosotros",
   description,
   alternates: {
-    canonical: "/about",
+    canonical: "/es/sobre-nosotros",
     languages: { en: `${siteUrl}/about`, es: `${siteUrl}/es/sobre-nosotros` },
   },
-  openGraph: { title: "About — Javé Agency", description, url: "/about" },
-  twitter: { title: "About — Javé Agency", description },
+  openGraph: { title: "Nosotros — Javé Agency", description, url: "/es/sobre-nosotros" },
+  twitter: { title: "Nosotros — Javé Agency", description },
 };
 
-const fallbackGradients = ["from-[#C7784E] to-[#8F3F20]", "from-[#264653] to-[#16262C]"];
-
-export default async function AboutPage() {
-  const cmsMembers = await getTeamMembers();
-
-  const founders =
-    cmsMembers.length > 0
-      ? cmsMembers.map((member, i) => ({
-          name: member.name,
-          role: member.role ?? "",
-          initial: member.name.charAt(0).toUpperCase(),
-          bio: member.bio ?? "",
-          photo: urlForImage(member.profileImage) ?? "/images/team/placeholder.jpg",
-          gradient: fallbackGradients[i % fallbackGradients.length],
-        }))
-      : staticFounders;
-
+export default function AboutPageEs() {
   return (
     <>
       <PageHero
         eyebrow={aboutHero.eyebrow}
         headline={aboutHero.headline}
         subheadline={aboutHero.subheadline}
-        crumbs={[{ label: "About" }]}
+        crumbs={[{ label: "Nosotros" }]}
+        locale="es"
       />
 
       <section className="bg-cream py-24 md:py-32">
@@ -76,19 +59,19 @@ export default async function AboutPage() {
               </p>
             ))}
             <p className="text-ink-soft text-lg leading-relaxed">
-              Curious what that looks like in practice? Explore our{" "}
+              ¿Tienes curiosidad de cómo se ve eso en la práctica? Explora nuestros{" "}
               <Link
-                href="/services"
+                href="/es/servicios"
                 className="text-terracotta-dark decoration-line hover:text-terracotta underline underline-offset-4"
               >
-                services
+                servicios
               </Link>{" "}
-              or see it applied in{" "}
+              o míralo aplicado en{" "}
               <Link
-                href="/work"
+                href="/es/trabajos"
                 className="text-terracotta-dark decoration-line hover:text-terracotta underline underline-offset-4"
               >
-                real client work
+                trabajos reales de clientes
               </Link>
               .
             </p>
@@ -137,10 +120,10 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <RevealMask className="mb-20 max-w-2xl md:mb-28">
             <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-              What Sets Us Apart
+              Lo Que Nos Distingue
             </span>
             <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-              Three things every client feels.
+              Tres cosas que todo cliente siente.
             </h2>
           </RevealMask>
 
@@ -213,8 +196,9 @@ export default async function AboutPage() {
       <InlineCta
         heading={aboutCta.heading}
         body={aboutCta.body}
-        secondaryLabel="Get in Touch"
-        secondaryHref="/contact"
+        secondaryLabel="Contáctanos"
+        secondaryHref="/es/contacto"
+        locale="es"
       />
     </>
   );

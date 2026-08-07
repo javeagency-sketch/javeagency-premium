@@ -1,9 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { localeFromPathname } from "@/lib/i18n";
 
 /**
  * The embedded Sanity Studio at /studio needs the full viewport with no
@@ -14,14 +15,19 @@ import { Footer } from "@/components/footer";
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isStudio = pathname?.startsWith("/studio");
+  const locale = localeFromPathname(pathname);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   if (isStudio) return <>{children}</>;
 
   return (
     <>
-      <Navbar />
+      <Navbar locale={locale} />
       <main>{children}</main>
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }

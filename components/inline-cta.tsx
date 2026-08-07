@@ -2,20 +2,25 @@ import Link from "next/link";
 import { MagneticLink } from "@/components/ui/magnetic-link";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 export function InlineCta({
   heading,
   body,
-  primaryLabel = "Book a Strategy Call",
+  primaryLabel,
   secondaryLabel,
   secondaryHref,
+  locale = "en",
 }: {
   heading: string;
   body: string;
   primaryLabel?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  locale?: Locale;
 }) {
+  const resolvedPrimaryLabel =
+    primaryLabel ?? (locale === "es" ? "Agendar una Llamada" : "Book a Strategy Call");
   return (
     <section className="from-terracotta to-terracotta-dark text-paper bg-gradient-to-br py-20 text-center md:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -31,7 +36,7 @@ export function InlineCta({
               rel="noopener"
               className="bg-paper text-ink hover:bg-ink hover:text-paper w-full rounded-sm px-8 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
-              {primaryLabel}
+              {resolvedPrimaryLabel}
             </MagneticLink>
             {secondaryLabel && secondaryHref && (
               <Link

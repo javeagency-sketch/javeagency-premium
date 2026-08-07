@@ -6,14 +6,18 @@ import { RevealMask } from "@/components/ui/reveal";
 import { workHero, workProjects as staticWorkProjects } from "@/lib/work";
 import { getWorkProjects } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
+import { siteUrl } from "@/lib/content";
 
 const description =
-  "Case studies from JAVE AGENCY's work with businesses in the United States, Chile, and Colombia — real e-commerce, B2B, branding, and entertainment projects.";
+  "Case studies from JAVE AGENCY's work with small businesses in Sullivan County, NY and clients across the United States, Chile, and Colombia — real e-commerce, B2B, branding, and entertainment projects.";
 
 export const metadata: Metadata = {
   title: "Work",
   description,
-  alternates: { canonical: "/work" },
+  alternates: {
+    canonical: "/work",
+    languages: { en: `${siteUrl}/work`, es: `${siteUrl}/es/trabajos` },
+  },
   openGraph: { title: "Work — Javé Agency", description, url: "/work" },
   twitter: { title: "Work — Javé Agency", description },
 };

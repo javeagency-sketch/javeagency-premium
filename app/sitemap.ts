@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms-and-conditions", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/es", priority: 1, changeFrequency: "weekly" },
+    { path: "/es/sobre-nosotros", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/es/servicios", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/es/trabajos", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/es/templates", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/es/contacto", priority: 0.8, changeFrequency: "yearly" },
   ];
 
   const serviceRoutes = services.map((service) => ({

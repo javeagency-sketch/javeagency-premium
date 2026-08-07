@@ -5,49 +5,24 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { InlineCta } from "@/components/inline-cta";
 import { HoverLift, Reveal, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
-import {
-  templatesHero,
-  templates as staticTemplates,
-  templatesCta,
-  type Template,
-} from "@/lib/templates";
-import { getTemplates } from "@/lib/sanity.queries";
-import { urlForImage } from "@/lib/sanity.image";
+import { templatesHero, templates, templatesCta } from "@/lib/templates.es";
 import { siteUrl } from "@/lib/content";
 
 const description =
-  "Premium, industry-specific website templates from JAVE AGENCY — the same design standard as our custom client work, built for small businesses in Sullivan County, NY and beyond.";
+  "Templates de sitios web premium por industria de JAVE AGENCY — el mismo estándar de diseño que nuestro trabajo personalizado con clientes, hecho para pequeños negocios en Sullivan County, NY y más allá.";
 
 export const metadata: Metadata = {
   title: "Templates",
   description,
   alternates: {
-    canonical: "/templates",
+    canonical: "/es/templates",
     languages: { en: `${siteUrl}/templates`, es: `${siteUrl}/es/templates` },
   },
-  openGraph: { title: "Templates — Javé Agency", description, url: "/templates" },
+  openGraph: { title: "Templates — Javé Agency", description, url: "/es/templates" },
   twitter: { title: "Templates — Javé Agency", description },
 };
 
-export default async function TemplatesPage() {
-  const cmsTemplates = await getTemplates();
-
-  // CMS templates have no detailSlug/screenshots (not part of that schema),
-  // so they always render with the "Coming Soon" state; the existing
-  // static entries keep their live preview pages working as-is.
-  const templates: Template[] = [
-    ...cmsTemplates.map((t) => ({
-      slug: t.slug.current,
-      name: t.title,
-      category: t.category ?? "",
-      description: t.shortDescription ?? "",
-      status: "coming-soon" as const,
-      image: urlForImage(t.previewImages?.[0]) ?? "/og-image.png",
-      alt: t.title,
-    })),
-    ...staticTemplates,
-  ];
-
+export default function TemplatesPageEs() {
   return (
     <>
       <PageHero
@@ -55,43 +30,46 @@ export default async function TemplatesPage() {
         headline={templatesHero.headline}
         subheadline={templatesHero.subheadline}
         crumbs={[{ label: "Templates" }]}
+        locale="es"
       />
 
       <section className="bg-cream py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-8">
           <RevealMask>
             <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-              How It Works
+              Cómo Funciona
             </span>
             <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-              Custom-grade design, ready to launch.
+              Diseño de calidad personalizada, listo para lanzar.
             </h2>
           </RevealMask>
 
           <Reveal className="max-w-2xl space-y-6">
             <p className="text-ink-soft text-lg leading-relaxed">
-              Not every business needs — or can wait for — a fully custom build. The JAVE AGENCY
-              template line packages the same premium design standard behind our{" "}
+              No todos los negocios necesitan — o pueden esperar por — un proyecto totalmente
+              personalizado. La línea de templates de JAVE AGENCY empaqueta el mismo estándar de
+              diseño premium detrás de nuestro{" "}
               <Link
-                href="/work"
+                href="/es/trabajos"
                 className="text-terracotta-dark decoration-line hover:text-terracotta underline underline-offset-4"
               >
-                client work
+                trabajo con clientes
               </Link>{" "}
-              into ready-to-launch templates for specific industries, so you can get a premium
-              website live faster, at a lower cost than a fully custom engagement.
+              en templates listos para lanzar, para poner en línea un sitio web premium más rápido
+              y a un costo menor que un proyecto totalmente personalizado.
             </p>
             <p className="text-ink-soft text-lg leading-relaxed">
-              Each template is still built on the same modern infrastructure as our custom projects
-              — fast, responsive, and SEO-ready — with room to add your own branding, copy, and
-              images. If you need something more specific to your business, our{" "}
+              Cada template está construido sobre la misma infraestructura moderna que nuestros
+              proyectos personalizados — rápida, responsiva y lista para SEO — con espacio para
+              agregar tu propia marca, textos e imágenes. Si necesitas algo más específico para tu
+              negocio, nuestro{" "}
               <Link
                 href="/services/web-design"
                 className="text-terracotta-dark decoration-line hover:text-terracotta underline underline-offset-4"
               >
-                custom web design service
+                servicio de diseño web personalizado
               </Link>{" "}
-              is the better fit.
+              es la mejor opción.
             </p>
           </Reveal>
         </div>
@@ -127,18 +105,18 @@ export default async function TemplatesPage() {
                           href={`/templates/${template.detailSlug}`}
                           className="border-terracotta text-terracotta-dark hover:bg-terracotta hover:text-paper rounded-sm border px-5 py-2.5 text-[12px] font-semibold tracking-[0.06em] uppercase transition-colors"
                         >
-                          View Preview
+                          Ver Vista Previa
                         </Link>
                       ) : (
                         <span className="border-line text-ink-soft/50 cursor-not-allowed rounded-sm border px-5 py-2.5 text-[12px] font-semibold tracking-[0.06em] uppercase">
-                          Live Demo — Coming Soon
+                          Demo en Vivo — Próximamente
                         </span>
                       )}
                       <Link
-                        href="/contact"
+                        href="/es/contacto"
                         className="text-terracotta-dark hover:text-terracotta inline-flex items-center gap-1.5 text-[12.5px] font-semibold tracking-[0.06em] uppercase transition-colors"
                       >
-                        Learn More <ArrowRight size={14} />
+                        Saber Más <ArrowRight size={14} />
                       </Link>
                     </div>
                   </div>
@@ -152,8 +130,9 @@ export default async function TemplatesPage() {
       <InlineCta
         heading={templatesCta.heading}
         body={templatesCta.body}
-        secondaryLabel="Start a Custom Project"
+        secondaryLabel="Iniciar un Proyecto Personalizado"
         secondaryHref="/services/web-design"
+        locale="es"
       />
     </>
   );

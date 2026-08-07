@@ -3,17 +3,26 @@
 import { motion } from "motion/react";
 import { EASE, RevealGroup, RevealItem, RevealMask } from "@/components/ui/reveal";
 import { process } from "@/lib/content";
+import { process as processEs } from "@/lib/content.es";
+import type { Locale } from "@/lib/i18n";
 
-export function Process() {
+const copy = {
+  en: { eyebrow: "Our Process", heading: "From first call to compounding growth." },
+  es: { eyebrow: "Nuestro Proceso", heading: "De la primera llamada a un crecimiento sostenido." },
+};
+
+export function Process({ locale = "en" }: { locale?: Locale } = {}) {
+  const steps = locale === "es" ? processEs : process;
+  const t = copy[locale];
   return (
     <section id="process" className="bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <RevealMask className="mb-20 text-center md:mb-28">
           <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-            Our Process
+            {t.eyebrow}
           </span>
           <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-            From first call to compounding growth.
+            {t.heading}
           </h2>
         </RevealMask>
 
@@ -25,7 +34,7 @@ export function Process() {
             transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
             className="bg-line absolute top-6 right-[12%] left-[12%] hidden h-px origin-left md:block"
           />
-          {process.map((step) => (
+          {steps.map((step) => (
             <RevealItem key={step.num} className="relative px-2 text-center">
               <div className="border-line bg-cream text-terracotta-dark relative z-10 mx-auto mb-7 flex h-12 w-12 items-center justify-center border font-serif text-sm">
                 {step.num}

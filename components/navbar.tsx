@@ -2,15 +2,24 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { EASE } from "@/components/ui/reveal";
 import { navLinks, site } from "@/lib/content";
+import { navLinks as navLinksEs } from "@/lib/content.es";
+import { alternatePath } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-function Logo() {
+const copy = {
+  en: { cta: "Get in Touch", switchTo: "Español" },
+  es: { cta: "Contáctanos", switchTo: "English" },
+};
+
+function Logo({ locale }: { locale: Locale }) {
   return (
-    <Link href="/" className="flex items-baseline gap-2">
+    <Link href={locale === "es" ? "/es" : "/"} className="flex items-baseline gap-2">
       <span className="text-ink font-serif text-xl font-semibold">
         Jav<span className="text-terracotta font-normal italic">é</span>
       </span>
@@ -19,12 +28,16 @@ function Logo() {
   );
 }
 
-export function Navbar() {
+export function Navbar({ locale = "en" }: { locale?: Locale } = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
   const drawerRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const links = locale === "es" ? navLinksEs : navLinks;
+  const t = copy[locale];
+  const switchHref = alternatePath(pathname, locale);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 12);
@@ -64,10 +77,10 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-        <Logo />
+        <Logo locale={locale} />
 
         <div className="hidden items-center gap-8 text-sm md:flex">
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -76,13 +89,19 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href={switchHref}
+            className="text-ink-soft hover:text-terracotta-dark text-xs font-semibold tracking-[0.08em] uppercase transition-colors"
+          >
+            {t.switchTo}
+          </Link>
           <a
             href={site.bookingUrl}
             target="_blank"
             rel="noopener"
             className="bg-ink text-paper hover:bg-terracotta-dark rounded-sm px-5 py-2.5 text-[13px] font-medium transition-colors"
           >
-            Get in Touch
+            {t.cta}
           </a>
         </div>
 
@@ -113,7 +132,7 @@ export function Navbar() {
             className="border-line bg-cream overflow-hidden border-t md:hidden"
           >
             <div className="flex flex-col px-6 pb-6">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -123,6 +142,13 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href={switchHref}
+                onClick={() => setOpen(false)}
+                className="border-line text-ink-soft border-t py-3.5 text-[15px]"
+              >
+                {t.switchTo}
+              </Link>
               <a
                 href={site.bookingUrl}
                 target="_blank"
@@ -130,7 +156,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="bg-ink text-paper mt-3 rounded-sm px-5 py-3 text-center text-[13px] font-medium"
               >
-                Get in Touch
+                {t.cta}
               </a>
             </div>
           </motion.div>

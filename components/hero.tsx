@@ -7,18 +7,42 @@ import { HeroBackground } from "@/components/hero-background";
 import { MagneticLink } from "@/components/ui/magnetic-link";
 import { EASE, RevealMask } from "@/components/ui/reveal";
 import { hero, site } from "@/lib/content";
+import { hero as heroEs } from "@/lib/content.es";
+import type { Locale } from "@/lib/i18n";
+
+const copy = {
+  en: {
+    eyebrow: "Design · Strategy · Growth",
+    primaryCtaText: "Book a Strategy Call",
+    secondaryCtaText: "View Selected Work",
+    secondaryHref: "/work",
+    callNow: "Call Now",
+  },
+  es: {
+    eyebrow: "Diseño · Estrategia · Crecimiento",
+    primaryCtaText: "Agendar una Llamada",
+    secondaryCtaText: "Ver Trabajos Seleccionados",
+    secondaryHref: "/es/trabajos",
+    callNow: "Llamar Ahora",
+  },
+};
 
 export function Hero({
-  headline = hero.headline,
-  subheadline = hero.subheadline,
-  primaryCtaText = "Book a Strategy Call",
-  secondaryCtaText = "View Selected Work",
+  locale = "en",
+  headline,
+  subheadline,
+  primaryCtaText,
+  secondaryCtaText,
 }: {
+  locale?: Locale;
   headline?: string;
   subheadline?: string;
   primaryCtaText?: string;
   secondaryCtaText?: string;
 } = {}) {
+  const heroContent = locale === "es" ? heroEs : hero;
+  const t = copy[locale];
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
       <HeroBackground />
@@ -32,12 +56,12 @@ export function Hero({
             transition={{ duration: 0.7, ease: EASE }}
             className="text-clay mb-8 inline-block text-xs font-semibold tracking-[0.24em] uppercase"
           >
-            Design · Strategy · Growth
+            {t.eyebrow}
           </motion.span>
 
           <RevealMask>
             <h1 className="text-cream mb-5 font-serif text-5xl leading-[1.02] font-medium tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
-              {headline}
+              {headline ?? heroContent.headline}
             </h1>
           </RevealMask>
 
@@ -47,7 +71,7 @@ export function Hero({
             transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
             className="text-clay mb-8 text-sm font-semibold tracking-[0.02em] md:text-base"
           >
-            {hero.locationLine}
+            {heroContent.locationLine}
           </motion.p>
 
           <motion.p
@@ -56,7 +80,7 @@ export function Hero({
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
             className="text-cream/75 mx-auto mb-14 max-w-2xl text-lg leading-relaxed md:text-xl"
           >
-            {subheadline}
+            {subheadline ?? heroContent.subheadline}
           </motion.p>
 
           <motion.div
@@ -71,20 +95,20 @@ export function Hero({
               rel="noopener"
               className="bg-terracotta text-paper hover:bg-terracotta-dark w-full rounded-sm px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
-              {primaryCtaText}
+              {primaryCtaText ?? t.primaryCtaText}
             </MagneticLink>
             <Link
-              href="/work"
+              href={t.secondaryHref}
               className="border-cream/30 text-cream hover:border-clay hover:text-clay w-full rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
-              {secondaryCtaText}
+              {secondaryCtaText ?? t.secondaryCtaText}
             </Link>
             <MagneticLink
               href={site.phoneHref}
               className="border-cream/30 text-cream hover:border-clay hover:text-clay inline-flex w-full items-center justify-center gap-2 rounded-sm border px-9 py-4 text-center text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-auto"
             >
               <Phone size={14} />
-              Call Now
+              {t.callNow}
             </MagneticLink>
           </motion.div>
         </div>

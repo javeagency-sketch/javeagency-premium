@@ -4,27 +4,42 @@ import { motion } from "motion/react";
 import { EASE, RevealMask } from "@/components/ui/reveal";
 import { PortfolioImage } from "@/components/portfolio-image";
 import { workProjects } from "@/lib/work";
+import { workProjects as workProjectsEs } from "@/lib/work.es";
+import type { Locale } from "@/lib/i18n";
 
-export function SelectedWork() {
+const copy = {
+  en: {
+    eyebrow: "Selected Work",
+    heading: "Real businesses, real transformations.",
+    body: "Every project is custom-built from the ground up — no templates, no shortcuts.",
+  },
+  es: {
+    eyebrow: "Trabajos Seleccionados",
+    heading: "Negocios reales, transformaciones reales.",
+    body: "Cada proyecto se construye a la medida desde cero — sin templates, sin atajos.",
+  },
+};
+
+export function SelectedWork({ locale = "en" }: { locale?: Locale } = {}) {
+  const projects = locale === "es" ? workProjectsEs : workProjects;
+  const t = copy[locale];
   return (
     <section id="work" className="bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <RevealMask className="mb-20 flex flex-wrap items-end justify-between gap-8 md:mb-28">
           <div className="max-w-xl">
             <span className="text-terracotta mb-5 block text-xs font-semibold tracking-[0.24em] uppercase">
-              Selected Work
+              {t.eyebrow}
             </span>
             <h2 className="text-4xl leading-[1.05] font-medium tracking-tight md:text-5xl">
-              Real businesses, real transformations.
+              {t.heading}
             </h2>
           </div>
-          <p className="text-ink-soft max-w-xs text-lg leading-relaxed">
-            Every project is custom-built from the ground up — no templates, no shortcuts.
-          </p>
+          <p className="text-ink-soft max-w-xs text-lg leading-relaxed">{t.body}</p>
         </RevealMask>
 
         <div className="divide-line border-line divide-y border-t">
-          {workProjects.map((project, i) => {
+          {projects.map((project, i) => {
             const reversed = i % 2 === 1;
             return (
               <motion.div

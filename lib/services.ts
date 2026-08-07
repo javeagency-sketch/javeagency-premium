@@ -34,6 +34,7 @@ export const services: ServiceDetail[] = [
       "Your website is the first real interaction most customers have with your business — it either builds credibility in the first few seconds or costs you the visit. Our web design and development service exists to make sure it's the former.",
       "We design and build custom sites from the ground up: no page builders, no recycled templates pretending to be bespoke. Every project starts with strategy — who the site needs to convince, what action they should take, and what's currently getting in the way — before a single screen gets designed.",
       "On the development side, we build on modern infrastructure (Next.js, deployed on Vercel's global edge network) so pages load fast everywhere, not just in one region. That matters even more for clients serving customers across the United States, Chile, and Colombia, where connection speeds and expectations vary by market.",
+      "Whether you need website design in Monticello, NY, a web designer in Liberty, NY, or local SEO in Wurtsboro, NY, our team builds custom, SEO-ready sites for small businesses across Sullivan County.",
     ],
     benefits: [
       {
@@ -103,6 +104,7 @@ export const services: ServiceDetail[] = [
       "Inconsistent branding is one of the fastest ways a growing business loses credibility — a logo that looks different on the website than on the invoice, colors that shift from post to post, no real guidelines to keep it all together. As a branding agency, this is the problem we solve first.",
       "We build complete identity systems: logo, color palette, typography, and usage guidelines that give your business one consistent look across every touchpoint — website, social, print, packaging, and beyond. The goal isn't just a nice logo; it's a system your team (or any future vendor) can apply consistently without a designer holding their hand every time.",
       "For businesses operating across multiple markets — the United States, Chile, and Colombia, in our case — a strong identity system also does the work of signaling professionalism instantly, before a customer reads a single word of copy.",
+      "As a branding agency serving Bloomingburg, NY and the greater Sullivan County and Catskills region, we build identity systems that hold up as you scale.",
     ],
     benefits: [
       {
@@ -172,6 +174,7 @@ export const services: ServiceDetail[] = [
       "Most small and mid-sized businesses lose leads to the same problem: nobody follows up fast enough. A form submission sits in an inbox for two days, a WhatsApp message goes unanswered overnight, a lead cools before anyone reaches out.",
       "Our automation and AI workflow service builds the infrastructure that closes that gap — automated lead capture and routing, follow-up sequences, CRM and email integration, and reporting dashboards that tell you what's actually working, without someone manually compiling a spreadsheet every week.",
       "This is where we combine AI-assisted tooling with human strategy: AI handles the repetitive, time-sensitive work — instant responses, data extraction, first-pass qualification — while your team stays focused on the conversations that actually need a human. The result is a business that responds like a much larger company, without the overhead of one.",
+      "We also handle Google Business Profile optimization for Sullivan County, NY businesses, so you show up in local map searches, not just organic results.",
     ],
     benefits: [
       {
@@ -241,6 +244,7 @@ export const services: ServiceDetail[] = [
       "A strong brand and a fast website still need a consistent presence to back them up — and content is where most small teams run out of time first. Posting becomes sporadic, visuals drift from the brand system, and the channel that should be building trust ends up doing the opposite.",
       "Our content and social asset service covers strategy, design, and copywriting for the channels that matter to your business: content calendars planned around your goals, feed and story design that stays on-brand, and copywriting that sounds like your business, not a template.",
       "Everything ties back to the identity system we build (or the one you already have) — so content strengthens the brand instead of diluting it, and every post looks like it came from the same premium business your website represents.",
+      "As a marketing agency serving the Catskills, NY region, we build content systems for small businesses that need to stay visible without hiring an in-house team.",
     ],
     benefits: [
       {

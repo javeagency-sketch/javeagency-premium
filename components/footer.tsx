@@ -1,8 +1,36 @@
 import Link from "next/link";
 import { legalLinks, navLinks, site } from "@/lib/content";
+import { legalLinks as legalLinksEs, navLinks as navLinksEs } from "@/lib/content.es";
 import { services } from "@/lib/services";
+import { services as servicesEs } from "@/lib/services.es";
+import type { Locale } from "@/lib/i18n";
 
-export function Footer() {
+const copy = {
+  en: {
+    tagline:
+      "A web design, SEO, and digital marketing agency serving Sullivan County, NY and businesses in the United States, Chile, and Colombia.",
+    navigation: "Navigation",
+    services: "Services",
+    connect: "Connect",
+    rights: "All rights reserved.",
+    working: "Working across USA · Chile · Colombia",
+  },
+  es: {
+    tagline:
+      "Una agencia de diseño web, SEO y marketing digital al servicio de Sullivan County, NY y negocios en Estados Unidos, Chile y Colombia.",
+    navigation: "Navegación",
+    services: "Servicios",
+    connect: "Conecta",
+    rights: "Todos los derechos reservados.",
+    working: "Trabajando en EE.UU. · Chile · Colombia",
+  },
+};
+
+export function Footer({ locale = "en" }: { locale?: Locale } = {}) {
+  const links = locale === "es" ? navLinksEs : navLinks;
+  const legal = locale === "es" ? legalLinksEs : legalLinks;
+  const serviceLinks = locale === "es" ? servicesEs : services;
+  const t = copy[locale];
   return (
     <footer className="bg-ink text-paper/85 py-20 pb-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -14,17 +42,14 @@ export function Footer() {
               </span>
               <span className="text-paper/60 text-[10px] tracking-[0.16em] uppercase">Agency</span>
             </div>
-            <p className="text-paper/60 max-w-[260px] text-sm">
-              A web design, branding, and marketing agency working with businesses in the United
-              States, Chile, and Colombia.
-            </p>
+            <p className="text-paper/60 max-w-[260px] text-sm">{t.tagline}</p>
           </div>
 
           <div>
             <h4 className="text-terracotta mb-4 text-[11.5px] tracking-[0.1em] uppercase">
-              Navigation
+              {t.navigation}
             </h4>
-            {navLinks.map((link) => (
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -37,9 +62,9 @@ export function Footer() {
 
           <div>
             <h4 className="text-terracotta mb-4 text-[11.5px] tracking-[0.1em] uppercase">
-              Services
+              {t.services}
             </h4>
-            {services.map((service) => (
+            {serviceLinks.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
@@ -52,7 +77,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-terracotta mb-4 text-[11.5px] tracking-[0.1em] uppercase">
-              Connect
+              {t.connect}
             </h4>
             <a
               href={site.instagramUrl}
@@ -81,8 +106,10 @@ export function Footer() {
 
         <div className="text-paper/50 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-6 text-[12.5px]">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <span>© {new Date().getFullYear()} Javé Agency. All rights reserved.</span>
-            {legalLinks.map((link) => (
+            <span>
+              © {new Date().getFullYear()} Javé Agency. {t.rights}
+            </span>
+            {legal.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -92,7 +119,7 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <span>Working across USA · Chile · Colombia</span>
+          <span>{t.working}</span>
         </div>
       </div>
     </footer>
